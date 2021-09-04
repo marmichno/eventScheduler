@@ -1,15 +1,13 @@
-//variables, mixins
-import './styles/index.scss'
 //routes
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 //components
-import {CreateMonthScheduleContainer} from './routes/createMonthSchedule/CreateMonthScheduleContainer';
+import {CreateScheduleContainer} from './routes/createSchedule/CreateScheduleContainer';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' exact component={CreateMonthScheduleContainer}/>
+        <Route path='/' exact component={CreateScheduleContainer}/>
       </Switch>
     </Router>
   );
