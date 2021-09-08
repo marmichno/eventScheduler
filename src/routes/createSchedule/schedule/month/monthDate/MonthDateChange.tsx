@@ -2,28 +2,25 @@
 import MonthDateCSS from './monthDate.module.scss';
 //hooks
 import { useEffect, useState } from 'react';
-import {useSelector} from 'react-redux';
-import { RootState } from '../../../../../reducers/index';
+import { useAppSelector } from '../../../../../hooks';
+import { useAppDispatch } from '../../../../../hooks';
+//actions
+import { monthChangeDate } from '../../../../../actions';
 
 export const MonthDate = () => {
 
-    const newDate = new Date();
+    const dispatch = useAppDispatch();
 
-    const selectedDate = useSelector((state: RootState) => state.monthDateReducer);
+    const selectedDate = useAppSelector(state => state.monthDateReducer);
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
-    const [selectedMonth, setSelectedMonth] = useState(newDate.getMonth());
-    const [selectedYear, setSelectedYear] = useState(newDate.getFullYear());
-
-    
-
     return(
         <div className={MonthDateCSS.dateContainer}>
-            <div className={MonthDateCSS.dateContainer__arrow}>&#8592;</div>
-            <div className={MonthDateCSS.dateContainer__date}>{`${monthNames[selectedMonth]}, ${selectedYear}`}</div>
-            <div className={MonthDateCSS.dateContainer__arrow}>&#8594;</div>
+            <div className={MonthDateCSS.dateContainer__arrow} onClick={() => dispatch(monthChangeDate('previous'))}>&#8592;</div>
+            <div className={MonthDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year}`}</div>
+            <div className={MonthDateCSS.dateContainer__arrow} onClick={() => dispatch(monthChangeDate('next'))}>&#8594;</div>
         </div>
     )
 }

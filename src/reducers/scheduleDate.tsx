@@ -5,9 +5,9 @@ const currentMonth = newDate.getMonth();
 const currentDay = newDate.getDay();
 
 const initialState = {
-    selectedDay: currentDay,
-    selectedMonth: currentMonth,
-    selectedYear: currentYear
+    day: currentDay,
+    month: currentMonth,
+    year: currentYear
 }
 
 
@@ -16,21 +16,22 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
     const timeDirection = action.payload;
 
     switch(action.type){
-        case 'MONTH':
+        case 'MONTHCHANGEDATE':
 
         if(timeDirection === "next"){
-            if(state.selectedMonth <= 10){
-                state.selectedMonth += 1;
+            if(state.month <= 10){
+                state = { ...state, month: state.month + 1 }
             }else{
-                state.selectedYear += 1;
-                state.selectedMonth = 0;
+                state = { ...state, year: state.year + 1 }
+                state = { ...state, month: 0 }
+                state.month = 0;
             }
         }else if(timeDirection === "previous"){
-            if(state.selectedMonth !== 0){
-                state.selectedMonth -= 1;
+            if(state.month !== 0){
+                state = { ...state, month: state.month - 1 }
             }else{
-                state.selectedMonth = 11;
-                state.selectedYear -= 1;
+                state = { ...state, month: 11 }
+                state = { ...state, year: state.year - 1}
             }
         }
 
