@@ -2,11 +2,13 @@ const newDate = new Date();
 
 const currentYear = newDate.getFullYear();
 const currentMonth = newDate.getMonth();
+const currentWeek = 0;
 const currentDay = newDate.getDay();
 
 const initialState = {
     day: currentDay,
     month: currentMonth,
+    week: currentWeek,
     year: currentYear
 }
 
@@ -32,6 +34,46 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }else{
                 state = { ...state, month: 11 }
                 state = { ...state, year: state.year - 1}
+            }
+        }
+
+        return state;
+
+        case 'WEEKCHANGEDATE':
+
+        if(timeDirection === "next"){
+            if(state.week === 3 && state.month === 1){
+                state = { ...state, month: state.month + 1 }
+                state = { ...state, week: 0 }
+            }
+            if(state.week === 4 && state.month !== 1 && state.month !== 11){
+                state = { ...state, month: state.month + 1 }
+                state = { ...state, week: 0 }
+            }
+            if(state.week === 4 && state.month !== 1 && state.month === 11){
+                state = { ...state, year: state.year + 1 }
+                state = { ...state, month: 0 }
+                state = { ...state, week: 0 }
+            }
+            if(state.week !== 4 && state.month !== 1 && state.month !== 11){
+                state = { ...state, month: state.month + 1 }
+            }
+        }else if(timeDirection === "previous"){
+            if(state.week === 0 && state.month === 2){
+                state = { ...state, month: state.month - 1 }
+                state = { ...state, week: 3 }
+            }
+            if(state.week === 0 && state.month !== 2){
+                state = { ...state, month: state.month - 1 }
+                state = { ...state, week: 4 }
+            }
+            if(state.week !== 0){
+                state = { ...state, month: state.month - 1 }
+            }
+            if(state.week === 0 && state.month === 0){
+                state = { ...state, year: state.year - 1 }
+                state = { ...state, month: 11 }
+                state = { ...state, week: 4 }
             }
         }
 

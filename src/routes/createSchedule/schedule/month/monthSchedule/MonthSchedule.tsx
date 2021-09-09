@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from '../../../../../hooks';
 //functions
 import {createArrayOfDays} from '../../common/createArrayOfDays';
+//modules
+import {days} from '../../common/days';
 
 interface Provider {
     dayDate: number,
@@ -16,15 +18,11 @@ interface Provider {
 export const MonthSchedule: React.FC = () => {
 
     const selectedDate = useAppSelector(state => state.monthDateReducer);
-
     const [arrayOfDays, setArrayOfDays] = useState<Array<Provider>>([]);
 
     useEffect(() => {
         setArrayOfDays(createArrayOfDays(selectedDate.month, selectedDate.year));
     },[selectedDate]);
-
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 
-    'Thursday', 'Friday', 'Saturday'];
 
     const howManyDayFillers = () => {
         const arrayOfFillers = [];

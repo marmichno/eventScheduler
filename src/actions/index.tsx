@@ -19,3 +19,10 @@ export const dayChangeDate = (direction:string) => {
         payload: direction
     }
 }
+
+export const scheduleType = (type:string) => {
+    return{
+        type: 'SELECTSCHEDULETYPE',
+        payload:type
+    }
+}
