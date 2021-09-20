@@ -1,11 +1,11 @@
 // css
 import CreateScheduleContainerCSS from './createScheduleContainer.module.scss';
 // components
-import {MonthSchedule} from './schedule/month/monthSchedule/MonthSchedule';
-import { WeekSchedule } from './schedule/week/weekSchedule/WeekSchedule';
-import {CreateScheduleChangeDate} from './changeDate/CreateScheduleChangeDate';
+import {MonthSchedule} from './month/monthSchedule/MonthSchedule';
+import { WeekSchedule } from './week/weekSchedule/WeekSchedule';
+import {CreateScheduleChangeDate} from '../date/CreateScheduleChangeDateContainer';
 //hooks
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../../hooks';
 
 export const CreateScheduleContainer: React.FC = () => {
 

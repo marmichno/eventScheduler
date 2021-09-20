@@ -1,7 +1,7 @@
 //routes
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 //components
-import {CreateScheduleContainer} from './routes/createSchedule/CreateScheduleContainer';
+import {CreateScheduleContainer} from './routes/createSchedule/schedule/CreateScheduleContainer';
 
 function App() {
   return (

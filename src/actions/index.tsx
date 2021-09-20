@@ -1,14 +1,14 @@
 //dates
-export const weekChangeDate = (direction:string) => {
+export const monthChangeDate = (direction:string) => {
     return{
-        type: 'WEEKCHANGEDATE',
+        type: 'MONTHCHANGEDATE',
         payload: direction
     }
 }
 
-export const monthChangeDate = (direction:string) => {
+export const weekChangeDate = (direction:string) => {
     return{
-        type: 'MONTHCHANGEDATE',
+        type: 'WEEKCHANGEDATE',
         payload: direction
     }
 }

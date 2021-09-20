@@ -17,7 +17,8 @@ interface Provider {
 
 export const WeekSchedule: React.FC = () => {
 
-    const selectedDate = useAppSelector(state => state.monthDateReducer);
+    const selectedDate = useAppSelector(state => state.scheduleDateReducer);
+
     const [arrayOfDays, setArrayOfDays] = useState<Array<Array<Provider>>>([]);
 
     useEffect(() => {
@@ -28,14 +29,6 @@ export const WeekSchedule: React.FC = () => {
             newArray.push(allDaysArray.slice(i, i + 7));
         }
         setArrayOfDays(newArray);
-    },[selectedDate]);
-
-    useEffect(() => {
-        console.log(arrayOfDays);
-    },[arrayOfDays])
-
-    useEffect(() => {
-        console.log(selectedDate);
     },[selectedDate]);
 
     if(arrayOfDays.length > 0){
@@ -54,6 +47,6 @@ export const WeekSchedule: React.FC = () => {
             </div>
         )
     }else{
-        return <div></div>
+        return <div className={WeekScheduleCSS.weekSchedule}></div>
     }
 }

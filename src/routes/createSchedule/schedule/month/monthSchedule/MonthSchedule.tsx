@@ -17,7 +17,7 @@ interface Provider {
 
 export const MonthSchedule: React.FC = () => {
 
-    const selectedDate = useAppSelector(state => state.monthDateReducer);
+    const selectedDate = useAppSelector(state => state.scheduleDateReducer);
     const [arrayOfDays, setArrayOfDays] = useState<Array<Provider>>([]);
 
     useEffect(() => {

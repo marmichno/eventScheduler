@@ -42,38 +42,35 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
         case 'WEEKCHANGEDATE':
 
         if(timeDirection === "next"){
-            if(state.week === 3 && state.month === 1){
+            if(state.week === 3 && state.month === 2){
                 state = { ...state, month: state.month + 1 }
                 state = { ...state, week: 0 }
-            }
-            if(state.week === 4 && state.month !== 1 && state.month !== 11){
+            }else if(state.week === 4 && state.month !== 2 && state.month !== 11){
                 state = { ...state, month: state.month + 1 }
                 state = { ...state, week: 0 }
-            }
-            if(state.week === 4 && state.month !== 1 && state.month === 11){
+            }else if(state.week === 4 && state.month !== 1 && state.month === 11){
                 state = { ...state, year: state.year + 1 }
                 state = { ...state, month: 0 }
                 state = { ...state, week: 0 }
-            }
-            if(state.week !== 4 && state.month !== 1 && state.month !== 11){
+            }else if(state.week === 4 && state.month !== 1 && state.month !== 11){
                 state = { ...state, month: state.month + 1 }
+                state = { ...state, week: 0 }
+            }else{
+                state = { ...state, week: state.week + 1}
             }
         }else if(timeDirection === "previous"){
             if(state.week === 0 && state.month === 2){
                 state = { ...state, month: state.month - 1 }
                 state = { ...state, week: 3 }
-            }
-            if(state.week === 0 && state.month !== 2){
+            }else if(state.week === 0 && state.month !== 2 && state.month !== 0){
                 state = { ...state, month: state.month - 1 }
                 state = { ...state, week: 4 }
-            }
-            if(state.week !== 0){
-                state = { ...state, month: state.month - 1 }
-            }
-            if(state.week === 0 && state.month === 0){
+            }else if(state.week === 0 && state.month === 0){
                 state = { ...state, year: state.year - 1 }
                 state = { ...state, month: 11 }
                 state = { ...state, week: 4 }
+            }else{
+                state = { ...state, week: state.week - 1}
             }
         }
 

@@ -12,7 +12,7 @@ export const createArrayOfDays = (selectedMonth:number, selectedYear:number) => 
 
     let arrayOfDays = [];
 
-    let daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+    let daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
 
     for(let i = 0; i < daysInMonth; i++){
         let whichDayIsIt = new Date(selectedYear, selectedMonth, i + 1).getDay();
@@ -20,7 +20,7 @@ export const createArrayOfDays = (selectedMonth:number, selectedYear:number) => 
         arrayOfDays.push(
             {
                 dayDate: (i + 1) < 10 ? parseInt(`0${i + 1}`) : (i + 1),
-                selectedMonth: (selectedMonth + 1) < 10 ? `0${selectedMonth + 1}` : (selectedMonth + 1),
+                selectedMonth: selectedMonth,
                 selectedYear: selectedYear,
                 dayName: days[whichDayIsIt]
             }
