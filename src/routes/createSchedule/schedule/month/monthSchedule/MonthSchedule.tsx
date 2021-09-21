@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from '../../../../../hooks';
 //functions
 import {createArrayOfDays} from '../../common/createArrayOfDays';
+import { howManyDayFillers } from '../../common/howManyDayFillers';
 //modules
 import {days} from '../../common/days';
 
@@ -24,15 +25,6 @@ export const MonthSchedule: React.FC = () => {
         setArrayOfDays(createArrayOfDays(selectedDate.month, selectedDate.year));
     },[selectedDate]);
 
-    const howManyDayFillers = () => {
-        const arrayOfFillers = [];
-        const index = days.indexOf(arrayOfDays[0].dayName);
-        for(let i = 0; i < index; i++){
-            arrayOfFillers.push('filler');
-        }
-        return arrayOfFillers;
-    }
-
     return(
         <div className={MonthScheduleCSS.monthSchedule}>
             <div className={MonthScheduleCSS.monthSchedule__dayNamesContainer}>
@@ -43,7 +35,7 @@ export const MonthSchedule: React.FC = () => {
 
             {arrayOfDays.length > 0 ?
             <div className={MonthScheduleCSS.monthSchedule__scheduleContainer}>
-                {howManyDayFillers().map(() => {
+                {howManyDayFillers(arrayOfDays).map(() => {
                     return <div className={MonthScheduleCSS.monthSchedule__dayNamesContainer__filler}></div>
                 })}
                 {arrayOfDays.map((value, index) => {

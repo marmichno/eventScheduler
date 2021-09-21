@@ -4,6 +4,7 @@ import CreateScheduleContainerCSS from './createScheduleContainer.module.scss';
 import {MonthSchedule} from './month/monthSchedule/MonthSchedule';
 import { WeekSchedule } from './week/weekSchedule/WeekSchedule';
 import {CreateScheduleChangeDate} from '../date/CreateScheduleChangeDateContainer';
+import { ScheduleManagement } from '../scheduleManagement/ScheduleManagement';
 //hooks
 import { useAppSelector } from '../../../hooks';
 
@@ -23,6 +24,7 @@ export const CreateScheduleContainer: React.FC = () => {
     return(
         <div className={CreateScheduleContainerCSS.mainContainer}>
             <CreateScheduleChangeDate/>
+            <ScheduleManagement/>
             {renderSwitch(scheduleType)}
         </div>
     )
