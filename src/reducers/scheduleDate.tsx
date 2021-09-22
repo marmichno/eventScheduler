@@ -15,12 +15,12 @@ const initialState = {
 
 const scheduleDateReducer = (state = initialState, action: { payload: any; type: any; }) => {
 
-    const timeDirection = action.payload;
+    const payload = action.payload;
 
     switch(action.type){
         case 'MONTHCHANGEDATE':
 
-        if(timeDirection === "next"){
+        if(payload === "next"){
             if(state.month <= 10){
                 state = { ...state, month: state.month + 1 }
             }else{
@@ -28,7 +28,7 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
                 state = { ...state, month: 0 }
                 state.month = 0;
             }
-        }else if(timeDirection === "previous"){
+        }else if(payload === "previous"){
             if(state.month !== 0){
                 state = { ...state, month: state.month - 1 }
             }else{
@@ -36,12 +36,12 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
                 state = { ...state, year: state.year - 1}
             }
         }
-
+        console.log(state);
         return state;
 
         case 'WEEKCHANGEDATE':
 
-        if(timeDirection === "next"){
+        if(payload === "next"){
             if(state.week === 3 && state.month === 2){
                 state = { ...state, month: state.month + 1 }
                 state = { ...state, week: 0 }
@@ -58,7 +58,7 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }else{
                 state = { ...state, week: state.week + 1}
             }
-        }else if(timeDirection === "previous"){
+        }else if(payload === "previous"){
             if(state.week === 0 && state.month === 2){
                 state = { ...state, month: state.month - 1 }
                 state = { ...state, week: 3 }
@@ -74,6 +74,13 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }
         }
 
+        return state;
+
+        case 'SETDATE':
+
+        state = payload;
+
+        console.log(state);
         return state;
 
         default:

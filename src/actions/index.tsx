@@ -1,4 +1,4 @@
-//dates
+//schedule management dates
 export const monthChangeDate = (direction:string) => {
     return{
         type: 'MONTHCHANGEDATE',
@@ -19,6 +19,20 @@ export const dayChangeDate = (direction:string) => {
         payload: direction
     }
 }
+
+interface Date {
+    day: number,
+    month: number,
+    week: number,
+    year: number
+}
+
+export const setDate = (date:Date) => {
+    return{
+        type: 'SETDATE',
+        payload: date
+    }
+} 
 
 export const scheduleType = (type:string) => {
     return{

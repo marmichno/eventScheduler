@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../../../hooks';
 //actions
 import { monthChangeDate } from '../../../../actions';
 import { weekChangeDate } from '../../../../actions';
+//modules
+import { monthNames } from '../../schedule/common/monthNames';
 
 export const ChangeDate = () => {
 
@@ -13,9 +15,6 @@ export const ChangeDate = () => {
 
     const selectedDate = useAppSelector(state => state.scheduleDateReducer);
     const scheduleType = useAppSelector(state => state.scheduleTypeReducer);
-
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
 
     const renderDate = () => {
         switch(scheduleType){
