@@ -15,7 +15,7 @@ export const weekChangeDate = (direction:string) => {
 
 export const dayChangeDate = (direction:string) => {
     return{
-        type: 'DAYHCHANGEDATE',
+        type: 'DAYCHANGEDATE',
         payload: direction
     }
 }

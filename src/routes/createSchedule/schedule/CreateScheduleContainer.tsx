@@ -3,6 +3,7 @@ import CreateScheduleContainerCSS from './createScheduleContainer.module.scss';
 // components
 import {MonthSchedule} from './month/monthSchedule/MonthSchedule';
 import { WeekSchedule } from './week/weekSchedule/WeekSchedule';
+import { DaySchedule } from './day/DaySchedule';
 import {CreateScheduleChangeDate} from '../date/CreateScheduleChangeDateContainer';
 import { ScheduleManagement } from '../scheduleManagement/ScheduleManagement';
 //hooks
@@ -18,6 +19,8 @@ export const CreateScheduleContainer: React.FC = () => {
                 return <MonthSchedule/>
             case 'week':
                 return <WeekSchedule/>
+            case 'day':
+                return <DaySchedule/>
         }
     }
 

@@ -36,7 +36,6 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
                 state = { ...state, year: state.year - 1}
             }
         }
-        console.log(state);
         return state;
 
         case 'WEEKCHANGEDATE':
@@ -74,13 +73,49 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }
         }
 
-        return state;
+        return state
+
+        case 'DAYCHANGEDATE':
+
+        const isOdd = (num:number) => (num % 2) === 1;
+        const daysInMonth = (month:number) => new Date(state.year, month + 1, 0).getDate();
+
+        if(payload === "next"){
+            if(state.day === daysInMonth(state.month)){
+                if(state.month === 11){
+                    state = {...state, month: 0}
+                    state = {...state, day: 1}
+                    state = {... state, year: state.year + 1}
+                }else{
+                    state = {...state, month: state.month + 1}
+                    state = {...state, day: 1};
+                }
+            }else{
+                state = {...state, day: state.day + 1};
+            }
+        }else if(payload === "previous"){
+            if(state.day === 1){
+                if(state.month === 0){
+                    state = {...state, month: 11}
+                    state = {...state, day: 31}
+                    state = {...state, year: state.year - 1}
+                }else{
+                    state = {...state, month: state.month - 1}
+                    state = {...state, day: daysInMonth(state.month)}
+                }
+            }else{
+                state = {...state, day: state.day - 1}
+            }
+        }
+
+        console.log(state);
+
+        return state
 
         case 'SETDATE':
 
         state = payload;
 
-        console.log(state);
         return state;
 
         default:

@@ -4,7 +4,7 @@ import ChangeDateCSS from './changeDate.module.scss';
 import { useAppSelector } from '../../../../hooks';
 import { useAppDispatch } from '../../../../hooks';
 //actions
-import { monthChangeDate } from '../../../../actions';
+import { dayChangeDate, monthChangeDate } from '../../../../actions';
 import { weekChangeDate } from '../../../../actions';
 //modules
 import { monthNames } from '../../schedule/common/monthNames';
@@ -22,6 +22,8 @@ export const ChangeDate = () => {
                 return <div className={ChangeDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year}`}</div>
             case "week":
                 return <div className={ChangeDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year} week:${selectedDate.week}`}</div>
+            case "day":
+                return <div className={ChangeDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year} day:${selectedDate.day}`}</div>
         }
     }
 
@@ -39,6 +41,13 @@ export const ChangeDate = () => {
                     dispatch(weekChangeDate('next'))
                 }else if(direction ==="previous"){
                     dispatch(weekChangeDate('previous'))
+                }
+                break;
+            case "day":
+                if(direction === "next"){
+                    dispatch(dayChangeDate('next'))
+                }else if(direction === "previous"){
+                    dispatch(dayChangeDate('previous'))
                 }
         }
     }
