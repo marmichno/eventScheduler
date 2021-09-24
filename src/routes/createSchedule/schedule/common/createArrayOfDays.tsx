@@ -7,6 +7,8 @@ interface Provider {
 
 export const createArrayOfDays = (selectedMonth:number, selectedYear:number) => {
 
+    console.log(selectedMonth);
+
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 
     'Thursday', 'Friday', 'Saturday'];
 

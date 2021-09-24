@@ -5,6 +5,18 @@ const currentMonth = newDate.getMonth();
 const currentWeek = 0;
 const currentDay = newDate.getDay();
 
+const whichWeekIsIt = (day:number) => {
+    let week = 0;
+    let i;
+    for(i=7;i<= 35;i+=7){
+        if(day <= i && day >= i - 7){
+            week = (i / 7) - 1;
+            break;
+        }
+    }
+    return week;
+}
+
 const initialState = {
     day: currentDay,
     month: currentMonth,
@@ -36,12 +48,14 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
                 state = { ...state, year: state.year - 1}
             }
         }
+        state = { ...state, day: 1}
+        console.log(state);
         return state;
 
         case 'WEEKCHANGEDATE':
 
         if(payload === "next"){
-            if(state.week === 3 && state.month === 2){
+            if(state.week === 3 && state.month === 1){
                 state = { ...state, month: state.month + 1 }
                 state = { ...state, week: 0 }
             }else if(state.week === 4 && state.month !== 2 && state.month !== 11){
@@ -61,7 +75,7 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             if(state.week === 0 && state.month === 2){
                 state = { ...state, month: state.month - 1 }
                 state = { ...state, week: 3 }
-            }else if(state.week === 0 && state.month !== 2 && state.month !== 0){
+            }else if(state.week === 0 && state.month !== 0){
                 state = { ...state, month: state.month - 1 }
                 state = { ...state, week: 4 }
             }else if(state.week === 0 && state.month === 0){
@@ -73,11 +87,12 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }
         }
 
+        state = { ...state, day: 1}
+        console.log(state);
         return state
 
         case 'DAYCHANGEDATE':
 
-        const isOdd = (num:number) => (num % 2) === 1;
         const daysInMonth = (month:number) => new Date(state.year, month + 1, 0).getDate();
 
         if(payload === "next"){
@@ -108,14 +123,14 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }
         }
 
-        console.log(state);
-
+        state = {...state, week: whichWeekIsIt(state.day)}
         return state
 
         case 'SETDATE':
 
         state = payload;
 
+        state = {...state, week: whichWeekIsIt(state.day)}
         return state;
 
         default:

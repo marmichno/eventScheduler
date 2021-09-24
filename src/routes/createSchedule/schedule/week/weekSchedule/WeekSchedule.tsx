@@ -22,6 +22,7 @@ export const WeekSchedule: React.FC = () => {
     const [arrayOfDays, setArrayOfDays] = useState<Array<Array<Provider>>>([]);
 
     useEffect(() => {
+        console.log(selectedDate.week, selectedDate.month, selectedDate.day)
         const allDaysArray = createArrayOfDays(selectedDate.month, selectedDate.year)
         let newArray = [];
         let i = 0;
@@ -30,8 +31,12 @@ export const WeekSchedule: React.FC = () => {
         }
         setArrayOfDays(newArray);
     },[selectedDate]);
+    
+    useEffect(() => {
+        console.log(arrayOfDays);
+    },[arrayOfDays]);
 
-    if(arrayOfDays.length > 0){
+    if(arrayOfDays.length > 0 && arrayOfDays[selectedDate.week] !== undefined){
         return(
             <div className={WeekScheduleCSS.weekSchedule}>
                 <div className={WeekScheduleCSS.weekSchedule__dayNamesContainer}>
