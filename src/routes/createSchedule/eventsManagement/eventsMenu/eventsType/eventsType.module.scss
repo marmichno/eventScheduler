@@ -1,0 +1,20 @@
+.eventTypesContainer{
+    width:100%;
+    height:10%;
+    background-color:aquamarine;
+    display:flex;
+
+    &__eventType{
+        width:50%;
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        opacity:0.3;
+
+        &--active{
+            @extend .eventTypesContainer__eventType;
+            opacity:1;
+        }
+    }
+}

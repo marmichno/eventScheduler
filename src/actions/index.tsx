@@ -40,3 +40,11 @@ export const scheduleType = (type:string) => {
         payload:type
     }
 }
+
+//events management
+export const eventType = (type:string) => {
+    return{
+        type: "SELECTEVENTTYPE",
+        payload:type
+    }
+}
