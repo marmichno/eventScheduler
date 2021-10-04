@@ -48,3 +48,17 @@ export const eventType = (type:string) => {
         payload:type
     }
 }
+
+export const popupEventType = (type:string) => {
+    return{
+        type: "SELECTPOPUPTYPE",
+        payload:type
+    }
+}
+
+export const showEventPopup = (type:boolean) => {
+    return{
+        type: "SHOWEVENTPOPUP",
+        payload:type
+    }
+}
