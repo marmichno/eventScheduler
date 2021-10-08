@@ -1,0 +1,17 @@
+.mainContainer{
+    height:7.5%;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+
+    &__hamburger{
+        height:100%;
+        width:5%;
+        background-color:red;
+        font-size:4em;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+}

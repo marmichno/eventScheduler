@@ -62,3 +62,21 @@ export const showEventPopup = (type:boolean) => {
         payload:type
     }
 }
+
+//navbar
+
+export const showNavbar = (showNavbar:boolean) => {
+    return{
+        type: "SHOWNAVBAR",
+        payload: showNavbar
+    }
+}
+
+//if user logged in
+
+export const isLogged = (isLogged:boolean) => {
+    return{
+        type: "ISLOGGED",
+        payload: isLogged
+    }
+}

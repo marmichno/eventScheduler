@@ -6,8 +6,8 @@ import { EventsTypeContainer } from './eventsType/EventsTypeContainer';
 export const SearchOptionsContainer = () => {
     return(
         <div className={SearchOptionsCSS.mainContainer}>
-            <CategoriesContainer/>
             <EventsTypeContainer/>
+            <CategoriesContainer/>
         </div>
     )
 }

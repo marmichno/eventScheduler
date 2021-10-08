@@ -1,0 +1,19 @@
+.mainContainer{
+    height:92.5%;
+    width:100%;
+    background-color:aqua;
+
+    &__logo{
+        height:25%;
+        width:100%;
+        background-color:red;
+    }
+
+    &__route{
+        width:100%;
+        height:10%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+}
