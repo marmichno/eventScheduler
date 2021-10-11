@@ -1,0 +1,10 @@
+.inputContainer{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    &__input{
+        display:flex;
+        flex-direction:column;
+    }
+}
