@@ -6,21 +6,32 @@
     position:relative;
 
     &__contentContainer{
-        background-color:blue;
         width:100%;
         height:92.5%;
+        background-color:cyan;
         display:flex;
         align-items:center;
         justify-content:center;
+        flex-direction:row-reverse;
+
 
         &__formContainer{
-            width:30%;
+            width:45%;
             height:90%;
+            background-color:white;
             display:flex;
             align-items:center;
             justify-content:center;
             flex-direction:column;
-            background-color:red;
+        }
+
+        &__featuresContainer{
+            width:45%;
+            height:90%;
+            background-color:green;
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
     }
 }

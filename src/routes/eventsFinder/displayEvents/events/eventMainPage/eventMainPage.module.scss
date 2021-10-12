@@ -1,7 +1,10 @@
+//variables, mixins
+@import '../../../../../styles/resources.scss';
+
 .mainContainer{
     width:100%;
     height:15%;
-    background-color:red;
+    background-color:$darkBlueBackground;
     display:flex;
     margin-bottom:1em;
 
@@ -14,7 +17,7 @@
     &__description{
         width:65%;
         height:100%;
-        background-color:yellow;
+        background-color:$notActiveHighlight;
         display:flex;
         align-items:center;
         justify-content:center;
@@ -33,7 +36,7 @@
             display:flex;
             align-items:center;
             justify-content:center;
-            background-color:rgb(212, 208, 199);
+            background-color:$darkBlueBackground;
         }
 
         &__category{

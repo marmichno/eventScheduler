@@ -1,5 +1,25 @@
+//variables, mixins
+@import '../../../../styles/resources.scss';
+
 .mainContainer{
     display:flex;
     width:15%;
     height:100%;
+    background-color:$secondBackground;
+
+    div{
+        width:50%;
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    &__active{
+        background-color:$highlight;
+    }
+
+    &__notActive{
+        background-color:$notActiveHighlight;
+    }
 }

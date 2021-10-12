@@ -1,3 +1,6 @@
+//variables, mixins
+@import '../../styles/resources.scss';
+
 .mainContainer{
     height:7.5%;
     width:100%;
@@ -5,11 +8,12 @@
     align-items:center;
     justify-content:flex-end;
     z-index:5;
+    background-color:$secondBackground;
 
     &__hamburger{
         height:100%;
         width:5%;
-        background-color:red;
+        background-color:$secondBackground;
         font-size:4em;
         display:flex;
         align-items:center;

@@ -1,5 +1,11 @@
+//variables, mixins
+@import '../../../../styles/resources.scss';
+
 .mainContainer{
     width:50%;
     height:100%;
-    background-color:blanchedalmond;
+    background-color:$secondBackground;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
