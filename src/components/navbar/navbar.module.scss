@@ -8,12 +8,12 @@
     align-items:center;
     justify-content:flex-end;
     z-index:5;
-    background-color:$secondBackground;
+    background-color:$background;
 
     &__hamburger{
         height:100%;
         width:5%;
-        background-color:$secondBackground;
+        background-color:$background;
         font-size:4em;
         display:flex;
         align-items:center;

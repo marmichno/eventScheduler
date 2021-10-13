@@ -5,7 +5,7 @@
     display:flex;
     width:15%;
     height:100%;
-    background-color:$secondBackground;
+    background-color:$background;
 
     div{
         width:50%;
@@ -20,6 +20,7 @@
     }
 
     &__notActive{
-        background-color:$notActiveHighlight;
+        background-color:$notActive;
+        opacity:0.3;
     }
 }
