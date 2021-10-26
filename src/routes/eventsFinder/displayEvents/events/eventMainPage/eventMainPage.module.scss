@@ -2,7 +2,7 @@
 @import '../../../../../styles/resources.scss';
 
 .mainContainer{
-    width:100%;
+    width:98%;
     height:15%;
     background-color:$background;
     display:flex;
@@ -28,6 +28,10 @@
         align-items:center;
         justify-content:center;
         flex-direction:column;
+        
+        h2{
+            margin-bottom:1rem;
+        }
 
         &__city{
             opacity:0.8;
@@ -35,7 +39,6 @@
             justify-content:center;
             align-items:center;
             text-align:center;
-            margin-bottom:1rem;
 
             &__icon{
                 display:flex;

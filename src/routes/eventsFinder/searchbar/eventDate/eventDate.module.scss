@@ -1,14 +1,13 @@
 //variables, mixins
 @import '../../../../styles/resources.scss';
 
-
 .mainContainer{
-    width:40%;
+    width:15%;
     height:100%;
     display:flex;
     align-items:center;
     justify-content:center;
-
+    
     &__input{
         width:90%;
         height:50%;

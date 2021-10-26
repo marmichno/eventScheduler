@@ -1,7 +1,11 @@
+//variables, mixins
+@import '../../../../styles/resources.scss';
+
+
 .mainContainer{
     height:92.5%;
     width:100%;
-    background-color:aqua;
+    background-color:$background;
     z-index:5;
     position:absolute;
     top:7.5%;
@@ -10,14 +14,47 @@
     &__logo{
         height:25%;
         width:100%;
-        background-color:red;
+        background-image:url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80");
+        background-size:cover;
+        background-position:center;
     }
 
-    &__route{
-        width:100%;
-        height:10%;
+    &__descriptionContainer{
+        height:50%;
         display:flex;
         align-items:center;
         justify-content:center;
+        flex-direction:column;
+
+        h2{
+            margin-bottom:1rem;
+            font-size:2rem;
+        }
+
+        ul{
+            list-style-type:none;
+            font-size:1.5rem;
+        }
     }
-}
+
+    &__routesContainer{
+        width:100%;
+        height:25%;
+        display:flex;
+        justify-content:center;
+        align-items:space-around;
+        flex-direction:column;
+
+        &__route{
+            width:100%;
+            height:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            button{
+                @include button();
+            }
+        }
+    }
+}   

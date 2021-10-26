@@ -25,7 +25,7 @@ export const NavbarSidebar = () => {
     return(
         <div className={NavbarSidebarCSS.mainContainer}>
             <div className={NavbarSidebarCSS.mainContainer__close}>
-                <button onClick={() => dispatch(showNavbar(!navbarState))}>close</button>
+                <button onClick={() => dispatch(showNavbar(!navbarState))}>x</button>
             </div>
             {renderSidebarContent()}
         </div>

@@ -5,6 +5,10 @@
     width:50%;
     height:100%;
     background-color:$background;
+    background-image:url("https://docs.microsoft.com/pl-pl/azure/azure-maps/media/migrate-google-maps-web-app/google-maps-marker.png");
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repepeat;
     display:flex;
     align-items:center;
     justify-content:center;

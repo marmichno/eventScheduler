@@ -10,6 +10,14 @@
     z-index:5;
     background-color:$background;
 
+    &__appName{
+        width:92.5%;
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        letter-spacing:0.3rem;
+    }
+
     &__hamburger{
         height:100%;
         width:5%;

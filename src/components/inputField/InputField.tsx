@@ -10,7 +10,7 @@ interface InputProps {
 
 export const InputField = ({label, name, type}: InputProps) => {
     return(
-    <div className={InputCSS.inputContainer}>
+        <div className={InputCSS.inputContainer}>
             <div className={InputCSS.inputContainer__input}>
                 <label htmlFor={name}>{label}</label>
                 <Field name={name} type={type}/>

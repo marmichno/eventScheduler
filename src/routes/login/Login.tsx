@@ -4,19 +4,10 @@ import { Navbar } from '../../components/navbar/Navbar';
 import { InputField } from '../../components/inputField/InputField';
 //formik
 import {Formik, Form} from 'formik';
-//hooks
-import { useHistory } from 'react-router';
+//icons
+import {GrFacebook} from 'react-icons/gr';
 
 export const Login = () => {
-
-    const history = useHistory();
-
-    const goToRegister = () => {
-        const location = {
-            pathname: `/register`,
-        }
-        history.push(location);
-    }
 
     return(
         <div className={LoginCSS.mainContainer}>
@@ -32,11 +23,16 @@ export const Login = () => {
                 }}
                 >
                     <Form className={LoginCSS.mainContainer__contentContainer__formContainer}>
-                        <h2>Login</h2>
-                        <InputField label="Login" name="login" type="text"/>
-                        <InputField label="Password" name="password" type="password"/>
-                        <div className={LoginCSS.mainContainer__contentContainer__formContainer__registerLink} onClick={() => goToRegister()}>don't have an account? Register here</div>
+                        <div className={LoginCSS.mainContainer__contentContainer__formContainer__inputContainer}>
+                            <InputField label="Login" name="login" type="text"/>
+                        </div>
+                        <div className={LoginCSS.mainContainer__contentContainer__formContainer__inputContainer}>
+                            <InputField label="Password" name="password" type="password"/>
+                        </div>
+                        <div className={LoginCSS.mainContainer__contentContainer__formContainer__registerLink}><a href="/register">don't have an account? Register here</a></div>
                         <button type="submit">Login</button>
+
+                        <div className={LoginCSS.mainContainer__contentContainer__formContainer__facebook}><p>join with <GrFacebook/></p></div>
                     </Form>
                 </Formik>
             </div>

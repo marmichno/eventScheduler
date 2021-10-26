@@ -13,6 +13,9 @@ export const CategoriesContainer = () => {
             <CategoriesIcons color="yellow" size="2rem" iconType="knowledge"/>
             <CategoriesIcons color="lightblue" size="2rem" iconType="technology"/>
             <CategoriesIcons color="orange" size="2rem" iconType="meet"/>
+            <CategoriesIcons color="white" size="2rem" iconType="automotive"/>
+            <CategoriesIcons color="purple" size="2rem" iconType="gaming"/>
+            <CategoriesIcons color="green" size="2rem" iconType="programming"/>
         </div>
     )
 }

@@ -1,3 +1,6 @@
+//variables, mixins
+@import '../../styles/resources.scss';
+
 .mainContainer{
     width:100vw;
     height:100vh;
@@ -8,7 +11,7 @@
     &__contentContainer{
         width:100%;
         height:92.5%;
-        background-color:cyan;
+        background-color:$background;
         display:flex;
         align-items:center;
         justify-content:center;
@@ -18,17 +21,45 @@
         &__formContainer{
             width:45%;
             height:90%;
-            background-color:white;
+            background-color:$contentBackground;
             display:flex;
             align-items:center;
             justify-content:center;
             flex-direction:column;
+
+            &__inputContainer{
+                width:50%;
+                height:10%;
+
+                label{
+                    font-size:1.5rem;
+                    margin-bottom:0.2rem;
+                }
+
+                input{
+                    height:50%;
+                    border:none;
+                    background-color:rgba(255, 255, 255, 0.144);
+                    text-align:center;
+                    font-size:1.2rem;
+                }
+            }
+
+            &__loginLink{
+                margin:1rem;
+                a{
+                    text-decoration:none;
+                }
+            }
+
+            button{
+                @include button();
+            }
         }
 
         &__featuresContainer{
             width:45%;
             height:90%;
-            background-color:green;
             display:flex;
             align-items:center;
             justify-content:center;

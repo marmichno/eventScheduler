@@ -16,6 +16,7 @@ export const Navbar = () => {
     return(
         <>
             <div className={NavbarCSS.mainContainer}>
+                <div className={NavbarCSS.mainContainer__appName}><h2>Event scheduler</h2></div>
                 <div className={NavbarCSS.mainContainer__hamburger} onClick={() => dispatch(showNavbar(!navbarState))}>=</div>
             </div>
             {navbarState ? <NavbarSidebar/> : null}
