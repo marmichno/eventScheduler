@@ -1,7 +1,9 @@
+//variables, mixins
+@import '../../../../../styles/resources.scss';
+
 .eventTypesContainer{
     width:100%;
     height:10%;
-    background-color:aquamarine;
     display:flex;
 
     &__eventType{
@@ -11,7 +13,8 @@
         align-items:center;
         justify-content:center;
         cursor:pointer;
-        opacity:0.3;
+        opacity:0.1;
+        border:solid 1px;
 
         &--active{
             @extend .eventTypesContainer__eventType;

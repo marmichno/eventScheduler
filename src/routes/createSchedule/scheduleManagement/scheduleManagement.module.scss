@@ -1,7 +1,11 @@
+//variables, mixins
+@import '../../../styles/resources.scss';
+
+
 .scheduleManagementContainer{
     height:100%;
     width:100%;
-    background-color:blue;
+    background-color:$contentBackground;
     display:flex;
     align-items:center;
     justify-content:center;

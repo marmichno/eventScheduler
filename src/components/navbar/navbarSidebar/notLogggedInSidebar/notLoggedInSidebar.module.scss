@@ -29,11 +29,16 @@
         h2{
             margin-bottom:1rem;
             font-size:2rem;
+            color: $textOnWhiteBackground;
         }
 
         ul{
             list-style-type:none;
             font-size:1.5rem;
+            
+            li{
+                color: $textOnWhiteBackground;
+            }
         }
     }
 

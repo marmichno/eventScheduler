@@ -1,7 +1,10 @@
+//variables, mixins
+@import '../../../styles/resources.scss';
+
 .changeDateContainer{
     width:100%;
     height:100%;
-    background-color:red;
+    background-color:$background;
     display:flex;
     align-items:center;
     justify-content:center;

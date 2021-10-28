@@ -1,6 +1,8 @@
 //variables, mixins
 @import '../../styles/resources.scss';
 
+//https://pngtree.com/freepng/teamwork-concept-people-working-in-table-meeting-and-the-co-working-office-flat-vector-illustration_6667637.html
+
 .mainContainer{
     width:100vw;
     height:100vh;
@@ -15,10 +17,14 @@
         display:flex;
         align-items:center;
         justify-content:center;
+        background-image:url("../../resources/img/loginBg.png");
+        background-size:60%;
+        background-repeat:no-repeat;
+        background-position:center;
 
         &__formContainer{
-            width:30%;
-            height:50%;
+            width:25%;
+            height:60%;
             display:flex;
             align-items:center;
             justify-content:center;
@@ -64,7 +70,7 @@
             &__facebook{
                 font-size:1.1rem;
                 position:absolute;
-                bottom:-0.65rem;
+                bottom:0;
                 letter-spacing:0.2rem;
             }
         }

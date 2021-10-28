@@ -1,7 +1,11 @@
+//variables, mixins
+@import '../../../../styles/resources.scss';
+
+
 .menuContainer{
     height:60%;
     width:100%;
-    background-color:cyan;
+    background-color:$contentBackground;
     overflow-y:scroll;
     position:relative;
 

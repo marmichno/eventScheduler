@@ -16,6 +16,10 @@
         align-items:center;
         justify-content:flex-start;
         letter-spacing:0.3rem;
+
+        h2{
+            color: $textOnWhiteBackground;
+        }
     }
 
     &__hamburger{
@@ -26,5 +30,6 @@
         display:flex;
         align-items:center;
         justify-content:center;
+        color: $textOnWhiteBackground;
     }
 }
