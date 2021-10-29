@@ -10,6 +10,9 @@ import { setDate } from '../../../actions';
 //modules
 import { days } from '../schedule/common/days';
 import {monthNames} from '../schedule/common/monthNames';
+//icons
+import {BsFillArrowLeftSquareFill} from 'react-icons/bs';
+import {BsFillArrowRightSquareFill} from 'react-icons/bs';
 
 interface Provider {
     dayDate: number,
@@ -71,9 +74,9 @@ export const SmallCalendar = () => {
     return(
         <div className={SmallCalendarCSS.calendarContainer}>
             <div className={SmallCalendarCSS.calendarContainer__changeDateContainer}>
-                <div onClick={() => changeMonth("previous")}>&#8592;</div>
-                {`${monthNames[selectedMonth]}, ${selectedYear}`}
-                <div onClick={() => changeMonth("next")}>&#8594;</div>
+                <div className={SmallCalendarCSS.calendarContainer__changeDateContainer__arrow} onClick={() => changeMonth("previous")}><BsFillArrowLeftSquareFill/></div>
+                <p className={SmallCalendarCSS.calendarContainer__changeDateContainer__date}>{`${monthNames[selectedMonth]}, ${selectedYear}`}</p>
+                <div className={SmallCalendarCSS.calendarContainer__changeDateContainer__arrow} onClick={() => changeMonth("next")}><BsFillArrowRightSquareFill/></div>
             </div>
             <div className={SmallCalendarCSS.calendarContainer__dayNamesContainer}>
                 {days.map(val => {

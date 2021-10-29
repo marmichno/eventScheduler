@@ -1,5 +1,46 @@
-.container{
+//variables, mixins
+@import '../../../../../styles/resources.scss';
+
+.mainContainer{
     width:100%;
     height:90%;
-    background-color:red;
+    background-color:$contentBackground;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    &__formContainer{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        width:100%;
+
+        &__inputContainer{
+            width:75%;
+
+            label{
+                font-size:1.5rem;
+                margin-top:1em;
+            }
+
+            input{
+                height:50%;
+                border:none;
+                background-color:rgba(255, 255, 255, 0.144);
+                text-align:center;
+                font-size:1.2rem;
+                padding:0.5em;
+
+                &:focus{
+                    outline:none;
+                }
+            }
+        }
+
+        button{
+            margin-top:2em;
+            @include button();
+        }
+    }
 }

@@ -10,8 +10,8 @@
     justify-content:center;
     
     &__description{
-        width:70%;
-        background-color:$highlight;
+        width:88%;
+        background-color:$darkerContentBackground;
         height:100%;
         display:flex;
         align-items:center;
@@ -19,12 +19,13 @@
     }
 
     &__action{
-        width:15%;
+        font-size:1.5em;
+        width:12%;
         height:100%;
         display:flex;
         align-items:center;
         justify-content:center;
-        background-color:$highlight;
+        background-color:$darkerContentBackground;
         cursor:pointer;
     }
 }

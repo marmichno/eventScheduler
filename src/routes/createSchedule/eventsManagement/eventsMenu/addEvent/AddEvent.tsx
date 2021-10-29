@@ -4,6 +4,8 @@ import { useAppDispatch } from '../../../../../hooks';
 //actions
 import { showEventPopup } from '../../../../../actions';
 import { popupEventType } from '../../../../../actions';
+//icons
+import {BsFillCalendar2PlusFill} from 'react-icons/bs';
 
 export const AddEvent = () => {
 
@@ -15,6 +17,6 @@ export const AddEvent = () => {
     }
 
     return(
-        <div className={AddEventCSS.addEvent} onClick={showAddPopup}>Add new event</div>
+        <div className={AddEventCSS.addEvent} onClick={showAddPopup}><p>Create new event</p><span><BsFillCalendar2PlusFill/></span></div>
     )
 }

@@ -8,6 +8,9 @@ import { dayChangeDate, monthChangeDate } from '../../../../actions';
 import { weekChangeDate } from '../../../../actions';
 //modules
 import { monthNames } from '../../schedule/common/monthNames';
+//icons
+import {BsFillArrowLeftSquareFill} from 'react-icons/bs';
+import {BsFillArrowRightSquareFill} from 'react-icons/bs';
 
 export const ChangeDate = () => {
 
@@ -19,11 +22,11 @@ export const ChangeDate = () => {
     const renderDate = () => {
         switch(scheduleType){
             case "month":
-                return <div className={ChangeDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year}`}</div>
+                return <div className={ChangeDateCSS.dateContainer__date}><h2>{`${monthNames[selectedDate.month]}, ${selectedDate.year}`}</h2></div>
             case "week":
-                return <div className={ChangeDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year} week:${selectedDate.week}`}</div>
+                return <div className={ChangeDateCSS.dateContainer__date}><h2>{`${monthNames[selectedDate.month]}, ${selectedDate.year} week:${selectedDate.week}`}</h2></div>
             case "day":
-                return <div className={ChangeDateCSS.dateContainer__date}>{`${monthNames[selectedDate.month]}, ${selectedDate.year} day:${selectedDate.day}`}</div>
+                return <div className={ChangeDateCSS.dateContainer__date}><h2>{`${monthNames[selectedDate.month]}, ${selectedDate.year} day:${selectedDate.day}`}</h2></div>
         }
     }
 
@@ -54,9 +57,9 @@ export const ChangeDate = () => {
 
     return(
         <div className={ChangeDateCSS.dateContainer}>
-            <div className={ChangeDateCSS.dateContainer__arrow} onClick={() => modifyDate("previous")}>&#8592;</div>
+            <div className={ChangeDateCSS.dateContainer__arrow} onClick={() => modifyDate("previous")}><h2><BsFillArrowLeftSquareFill/></h2></div>
             {renderDate()}
-            <div className={ChangeDateCSS.dateContainer__arrow} onClick={() => modifyDate("next")}>&#8594;</div>
+            <div className={ChangeDateCSS.dateContainer__arrow} onClick={() => modifyDate("next")}><h2><BsFillArrowRightSquareFill/></h2></div>
         </div>
     )
 }

@@ -11,40 +11,9 @@
     top:7.5%;
     right:0;
 
-    &__logo{
-        height:25%;
-        width:100%;
-        background-image:url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80");
-        background-size:cover;
-        background-position:center;
-    }
-
-    &__descriptionContainer{
-        height:50%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        flex-direction:column;
-
-        h2{
-            margin-bottom:1rem;
-            font-size:2rem;
-            color: $textOnWhiteBackground;
-        }
-
-        ul{
-            list-style-type:none;
-            font-size:1.5rem;
-            
-            li{
-                color: $textOnWhiteBackground;
-            }
-        }
-    }
-
     &__routesContainer{
         width:100%;
-        height:25%;
+        height:100%;
         display:flex;
         justify-content:center;
         align-items:space-around;
@@ -52,13 +21,22 @@
 
         &__route{
             width:100%;
-            height:50%;
+            height:33.3%;
             display:flex;
             align-items:center;
             justify-content:center;
+            text-align:center;
+            background-color:rgba(32, 8, 97, 0.801);
+            background-image:url("../../../../resources/img/loginBg.png");
+            background-blend-mode:saturation;
+            background-size:65%;
+            background-repeat:no-repeat;
+            background-position:center;
 
-            button{
-                @include button();
+            a{
+                text-decoration:none;
+                cursor:pointer;
+                font-size:2em;
             }
         }
     }

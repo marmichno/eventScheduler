@@ -12,13 +12,13 @@ export const ScheduleType = () => {
     return(
             <div className={ScheduleTypeCSS.scheduleType}>
                 <div className={ScheduleTypeCSS.scheduleType__options} onClick={() => dispatch(scheduleType('day'))}>
-                    day
+                    <h3>day</h3>
                 </div>
-                <div className={ScheduleTypeCSS.scheduleType__options} onClick={() => dispatch(scheduleType('month'))}>
-                    month
+                <div className={`${ScheduleTypeCSS.scheduleType__options} ${ScheduleTypeCSS['scheduleType__options--active']}`} onClick={() => dispatch(scheduleType('month'))}>
+                    <h3>month</h3>
                 </div>
                 <div className={ScheduleTypeCSS.scheduleType__options} onClick={() => dispatch(scheduleType('week'))}>
-                    week
+                    <h3>week</h3>
                 </div>
             </div>
     )

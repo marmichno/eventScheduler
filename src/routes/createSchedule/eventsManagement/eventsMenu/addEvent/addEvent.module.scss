@@ -7,6 +7,16 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    background-color:$darkerContentBackground;
+    background-color:$notActive;
     cursor:pointer;
+
+    p{
+        font-size:1.3em;
+        margin-right:1em;
+        letter-spacing:0.05em;
+    }
+
+    span{
+        font-size:2em;
+    }
 }
