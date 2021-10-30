@@ -2,11 +2,11 @@
 @import '../../../../../styles/resources.scss';
 
 .mainContainer{
-    width:98%;
+    width:99%;
     height:15%;
     background-color:$background;
     display:flex;
-    margin-bottom:1em;
+    margin-bottom:0.5em;
     border-radius:10px 10px 10px 10px;
 
     &__icon{
@@ -17,7 +17,6 @@
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
-        border-right:1px solid $textOnDarkBackground;
     }
 
     &__description{

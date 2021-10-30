@@ -3,7 +3,7 @@
 
 
 .mainContainer{
-    width:40%;
+    width:20%;
     height:100%;
     display:flex;
     align-items:center;
@@ -11,11 +11,14 @@
 
     &__input{
         width:90%;
-        height:50%;
+        height:70%;
         background-color:transparent;
         border:none;
-        border-bottom:1px solid $highlight;
+        border-bottom:2px dashed $highlight;
+        border-left:2px dashed $highlight;
         font-size:1.5rem;
+        color:$darkerContentBackground;
+        text-align:center;
 
         &:focus{
             outline:none;

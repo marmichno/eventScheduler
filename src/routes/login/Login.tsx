@@ -23,6 +23,7 @@ export const Login = () => {
                 }}
                 >
                     <Form className={LoginCSS.mainContainer__contentContainer__formContainer}>
+                        <h2>Login</h2>
                         <div className={LoginCSS.mainContainer__contentContainer__formContainer__inputContainer}>
                             <InputField label="Login" name="login" type="text"/>
                         </div>
