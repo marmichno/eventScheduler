@@ -3,10 +3,17 @@ import EventMainPageCSS from './eventMainPage.module.scss';
 import { CategoriesIcons } from '../../../../../components/categoriesIcons/CategoriesIcons';
 import {MdDateRange} from 'react-icons/md';
 import {MdPlace} from 'react-icons/md';
+//hooks
+import { useAppDispatch } from '../../../../../hooks';
+//actions
+import { selectedEventEventFinder } from '../../../../../actions';
 
 export const EventMainPage = () => {
+
+    const dispatch = useAppDispatch();
+
     return(
-        <div className={EventMainPageCSS.mainContainer}>
+        <div className={EventMainPageCSS.mainContainer} onClick={() => dispatch(selectedEventEventFinder(1))}>
             <div className={EventMainPageCSS.mainContainer__icon}></div>
             <div className={EventMainPageCSS.mainContainer__description}>
                 <div><h2>Some kind of event title</h2></div>

@@ -72,6 +72,15 @@ export const showNavbar = (showNavbar:boolean) => {
     }
 }
 
+//events main page
+
+export const selectedEventEventFinder = (selectedEventIdEventFinder:number) => {
+    return{
+        type: "SELECTEVENTEVENTFINDER",
+        payload: selectedEventIdEventFinder
+    }
+}
+
 //if user logged in
 
 export const isLogged = (isLogged:boolean) => {

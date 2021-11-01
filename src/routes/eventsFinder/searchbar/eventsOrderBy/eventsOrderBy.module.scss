@@ -1,14 +1,15 @@
 //variables, mixins
 @import '../../../../styles/resources.scss';
 
+
 .mainContainer{
-    width:25%;
     height:100%;
+    width:17.5%;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    &__input{
+    
+    &__select{
         width:90%;
         height:50%;
         background-color:$background;
@@ -16,11 +17,11 @@
         border:none;
         border-bottom:4px solid $highlight;
         font-size:1.5rem;
-        color:$darkerContentBackground;
+        color:$textOnWhiteBackground;
         text-align:center;
 
-        &:focus{
-            outline:none;
+        &__option{
+            cursor:pointer;
         }
     }
 }

@@ -3,6 +3,7 @@ import SearchbarCSS from './searchbar.module.scss';
 import { EventTitle } from './eventTitle/EventTitle';
 import { EventPlace } from './eventPlace/EventPlace';
 import { EventDate } from './eventDate/EventDate';
+import { EventsOrderBy } from './eventsOrderBy/EventsOrderBy';
 
 export const Searchbar = () => {
     return(
@@ -10,6 +11,7 @@ export const Searchbar = () => {
             <EventTitle/>
             <EventPlace/>
             <EventDate/>
+            <EventsOrderBy/>
         </div>
     )
 }

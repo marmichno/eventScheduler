@@ -2,7 +2,7 @@
 @import '../../../../styles/resources.scss';
 
 .mainContainer{
-    width:12%;
+    width:20%;
     height:100%;
     display:flex;
     align-items:center;
@@ -10,11 +10,11 @@
     
     &__input{
         width:90%;
-        height:70%;
-        background-color:transparent;
+        height:50%;
+        background-color:$background;
+        border-radius:5px;
         border:none;
-        border-bottom:2px dashed $highlight;
-        border-right:2px dashed $highlight;
+        border-bottom:4px solid $highlight;
         font-size:1.5rem;
         color:$darkerContentBackground;
         text-align:center;

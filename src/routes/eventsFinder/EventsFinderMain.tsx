@@ -2,14 +2,12 @@ import EventsFinderCSS from './eventsFinder.module.scss';
 //components
 import { Navbar } from '../../components/navbar/Navbar';
 import { DisplayEventsContainer } from './displayEvents/DisplayEventsContainer';
-import { Searchbar } from './searchbar/Searchbar';
 import { SearchOptionsContainer } from './searchOptions/SearchOptionsContainer';
 
 export const EventsFinderMain = () => {
     return(
         <div className={EventsFinderCSS.mainContainer}>
             <Navbar/>
-            <Searchbar/>
             <SearchOptionsContainer/>
             <DisplayEventsContainer/>
         </div>
