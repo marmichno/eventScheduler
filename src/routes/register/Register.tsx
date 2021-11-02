@@ -4,6 +4,8 @@ import { InputField } from '../../components/inputField/InputField';
 import { Navbar } from '../../components/navbar/Navbar';
 //formik
 import {Formik, Form} from 'formik';
+//requests
+import { createUser } from './requests/createUser';
 
 export const Register = () => {
 
@@ -12,18 +14,30 @@ export const Register = () => {
             <Navbar/>
             <div className={RegisterCSS.mainContainer__contentContainer}>
                 <Formik initialValues={{
-                    login: '',
-                    password: ''
+                    name: '',
+                    description: '',
+                    username: '',
+                    password: '',
+                    repeatPassword: '',
+                    email:''
+
                 }}
                 // validationSchema={validationSchema}
-                onSubmit={ data =>{
-                    console.log(data);
+                onSubmit={ async (data) =>{
+                    const response = await createUser(data);
+                    console.log(response);
                 }}
                 >
                     <Form className={RegisterCSS.mainContainer__contentContainer__formContainer}>
                         <h1>Register</h1>
                         <div className={RegisterCSS.mainContainer__contentContainer__formContainer__inputContainer}>
-                            <InputField label="Login" name="login" type="text"/>
+                            <InputField label="Name" name="name" type="text"/>
+                        </div>
+                        <div className={RegisterCSS.mainContainer__contentContainer__formContainer__inputContainer}>
+                            <InputField label="Description" name="description" type="text"/>
+                        </div>
+                        <div className={RegisterCSS.mainContainer__contentContainer__formContainer__inputContainer}>
+                            <InputField label="Username" name="username" type="text"/>
                         </div>
                         <div className={RegisterCSS.mainContainer__contentContainer__formContainer__inputContainer}>
                             <InputField label="E-mail" name="email" type="text"/>
