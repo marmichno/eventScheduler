@@ -5,6 +5,7 @@ const isLoggedReducer = (state = false, action: { payload: boolean; type: any; }
 
     switch(action.type){
         case 'ISLOGGED':
+            console.log(payload);
             return payload;
 
         default:

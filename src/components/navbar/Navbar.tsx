@@ -11,7 +11,6 @@ export const Navbar = () => {
 
     const dispatch = useAppDispatch();
     const navbarState = useAppSelector(state => state.showNavbarReducer);
-    const isUserLogged = useAppSelector(state => state.isLoggedReducer);
 
     return(
         <>

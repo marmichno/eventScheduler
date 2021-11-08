@@ -4,10 +4,18 @@ import { Navbar } from '../../components/navbar/Navbar';
 import { InputField } from '../../components/inputField/InputField';
 //formik
 import {Formik, Form} from 'formik';
+//requests
+import {loginUser} from './requests/loginUser';
+//hooks
+import { useAppDispatch } from '../../hooks';
+//actions
+import { isLogged } from '../../actions';
 //icons
 import {GrFacebook} from 'react-icons/gr';
 
 export const Login = () => {
+
+    const dispatch = useAppDispatch();
 
     return(
         <div className={LoginCSS.mainContainer}>
@@ -18,8 +26,14 @@ export const Login = () => {
                     password: ''
                 }}
                 // validationSchema={validationSchema}
-                onSubmit={ data =>{
-                    console.log(data);
+                onSubmit={ async (data) =>{
+                    const response = await loginUser(data);
+                    if(response === undefined){
+                        return null
+                    }else{
+                        dispatch(isLogged(true))
+                    }
+
                 }}
                 >
                     <Form className={LoginCSS.mainContainer__contentContainer__formContainer}>
