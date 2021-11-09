@@ -4,10 +4,16 @@ import { InputField } from '../../components/inputField/InputField';
 import { Navbar } from '../../components/navbar/Navbar';
 //formik
 import {Formik, Form} from 'formik';
+//validationSchema
+import { registerValidationSchema } from './registerValidationSchema/registerValidationSchema';
 //requests
 import { createUser } from './requests/createUser';
+//router
+import { useHistory } from "react-router-dom";
 
 export const Register = () => {
+
+    const history = useHistory();
 
     return(
         <div className={RegisterCSS.mainContainer}>
@@ -22,10 +28,18 @@ export const Register = () => {
                     email:''
 
                 }}
-                // validationSchema={validationSchema}
+                validationSchema={registerValidationSchema}
+                
                 onSubmit={ async (data) =>{
+
                     const response = await createUser(data);
-                    console.log(response);
+
+                    if(response === 201){
+                        const location = {
+                            pathname: '/login'
+                        }
+                        history.push(location);
+                    }
                 }}
                 >
                     <Form className={RegisterCSS.mainContainer__contentContainer__formContainer}>

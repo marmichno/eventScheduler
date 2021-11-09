@@ -9,6 +9,7 @@
     display:flex;
     flex-direction:column;
     position:relative;
+    color:$textOnDarkBackground;
 
     &__contentContainer{
         background-color:$background;
@@ -51,6 +52,7 @@
                     height:50%;
                     border:none;
                     background-color:rgba(255, 255, 255, 0.144);
+                    color:$textOnDarkBackground;
                     text-align:center;
                     font-size:1.2rem;
 

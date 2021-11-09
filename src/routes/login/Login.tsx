@@ -28,12 +28,9 @@ export const Login = () => {
                 // validationSchema={validationSchema}
                 onSubmit={ async (data) =>{
                     const response = await loginUser(data);
-                    if(response === undefined){
-                        return null
-                    }else{
+                    if(response === 200){
                         dispatch(isLogged(true))
                     }
-
                 }}
                 >
                     <Form className={LoginCSS.mainContainer__contentContainer__formContainer}>

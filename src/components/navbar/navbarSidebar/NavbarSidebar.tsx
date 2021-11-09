@@ -13,7 +13,6 @@ export const NavbarSidebar = () => {
     const dispatch = useAppDispatch();
     const navbarState = useAppSelector(state => state.showNavbarReducer);
     const isLogged = useAppSelector(state => state.isLoggedReducer);
-    console.log(isLogged);
 
     const renderSidebarContent = () => {
         if(isLogged){

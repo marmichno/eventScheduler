@@ -8,6 +8,10 @@ import {EventsFinderMain} from './routes/eventsFinder/EventsFinderMain';
 import {isLogged} from './actions';
 import axios from 'axios';
 import {useAppDispatch} from './hooks';
+//toastify
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./styles/_toasts.scss";
 
 function App() {
 
@@ -21,6 +25,17 @@ function App() {
 
   return (
     <Router>
+      <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+      />
       <Switch>
         <Route path='/' exact component={EventsFinderMain}/>
         <Route path='/login' exact component={Login}/>
