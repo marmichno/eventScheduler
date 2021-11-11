@@ -5,8 +5,12 @@ import {Login} from './routes/login/Login';
 import { Register } from './routes/register/Register';
 import {CreateScheduleContainer} from './routes/createSchedule/schedule/CreateScheduleContainer';
 import {EventsFinderMain} from './routes/eventsFinder/EventsFinderMain';
+import { UserProfile } from './routes/userProfile/UserProfile';
+//actions
 import {isLogged} from './actions';
+//axios for default header
 import axios from 'axios';
+//hooks
 import {useAppDispatch} from './hooks';
 //toastify
 import {toast, ToastContainer} from 'react-toastify';
@@ -40,6 +44,7 @@ function App() {
         <Route path='/' exact component={EventsFinderMain}/>
         <Route path='/login' exact component={Login}/>
         <Route path='/Register' exact component={Register}/>
+        <Route path='/userProfile' exact component={UserProfile}/>
         <Route path='/manageSchedule' exact component={CreateScheduleContainer}/>
       </Switch>
     </Router>
