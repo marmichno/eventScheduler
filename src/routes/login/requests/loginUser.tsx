@@ -17,7 +17,10 @@ export const loginUser = async ({login, password}:UserData) =>{
     try{
         const request = await axios.get('http://localhost:8080/api/user', config);
         const response = await request;
+        // save user info to local storage
+        localStorage.setItem('userInfo', JSON.stringify(response.data));
         let headers = btoa(login + ":" + password);
+        // save user login info for login system
         localStorage.setItem('user', headers);
         axios.defaults.headers.common['Authorization'] = `Basic ` + headers;
         toast.success(`Welcome ${login}`);
