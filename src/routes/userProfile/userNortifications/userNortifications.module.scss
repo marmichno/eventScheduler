@@ -1,0 +1,14 @@
+//variables, mixins
+@import '../../../styles/resources.scss';
+
+.mainContainer {
+    width: 90%;
+    height: 95%;
+    grid-column: span 4;
+    grid-row:span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:space-around;
+    background-color:$contentBackground;
+}
