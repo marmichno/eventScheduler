@@ -8,10 +8,10 @@
     position:relative;
 
     &__contentContainer{
-        display:grid;
         width:97.5%;
         height:92.5%;
-        grid-template-rows:repeat(4, 1fr);
-        grid-template-columns:repeat(8, 1fr);
+        display:flex;
+        align-items:flex-start;
+        justify-content:center;
     }
 }

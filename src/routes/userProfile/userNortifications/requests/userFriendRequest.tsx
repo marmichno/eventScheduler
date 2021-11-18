@@ -4,10 +4,9 @@ import {toast} from 'react-toastify';
 export const userFriendRequest = async () =>{
 
     try{
-        const request = await axios.get('http://localhost:8080/api/user');
+        const request = await axios.get('http://localhost:8080/api/user/invitation');
         const response = await request;
         // save user info to local storage
-        localStorage.setItem('userInfo', JSON.stringify(response.data));
         return response;
     }catch(error:any){
         if (error.response) {
