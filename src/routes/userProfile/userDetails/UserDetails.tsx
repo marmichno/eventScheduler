@@ -24,7 +24,6 @@ export const UserDetails = () => {
 
         if (userInfo !== null) {
             setDetailsUserInfo(JSON.parse(userInfo));
-            console.log(userInfo);
         }
     }, []);
 

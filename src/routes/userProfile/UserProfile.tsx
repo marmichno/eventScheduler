@@ -10,7 +10,9 @@ export const UserProfile = () => {
             <Navbar />
             <div className={UserProfileCSS.mainContainer__contentContainer}>
                 <UserDetails />
-                <UserNortifications />
+                <div className={UserProfileCSS.mainContainer__contentContainer__nortifications}>
+                    <UserNortifications />
+                </div>
             </div>
         </div>
     )

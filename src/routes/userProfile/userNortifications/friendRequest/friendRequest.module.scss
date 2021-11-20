@@ -1,0 +1,40 @@
+//variables, mixins
+@import "../../../../styles/resources.scss";
+
+.mainContainer {
+    width: 70%;
+    min-height: 20%;
+    background-color: $darkerContentBackground;
+    margin-bottom: 5px;
+
+    &__contentContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__textContent {
+            height: 100%;
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            p {
+                color: $textOnDarkBackground;
+            }
+        }
+
+        &__avatar {
+            width: 20%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

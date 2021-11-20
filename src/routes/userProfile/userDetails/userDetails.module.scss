@@ -2,7 +2,7 @@
 @import '../../../styles/resources.scss';
 
 .mainContainer {
-    width: 35%;
+    width: 45%;
     height: 30%;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@
                 align-items:center;
                 justify-content:center;
                 text-align:center;
-                background-color: $highlight;
+                background-color: $darkerContentBackground;
             }
 
             &__descriptionContainer{
