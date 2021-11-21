@@ -10,13 +10,9 @@
     &__contentContainer{
         width:97.5%;
         height:92.5%;
-        display:flex;
-        align-items:flex-start;
-        justify-content:space-between;
-
-        &__nortifications{
-            width:52.5%;
-            height:100%;
-        }
+        display:grid;
+        grid-template-rows: 31.9% 3.3% 28.6% 8.3% 13% 16.6%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap:2em;
     }
 }
