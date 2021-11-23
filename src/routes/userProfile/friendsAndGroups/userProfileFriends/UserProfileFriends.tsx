@@ -1,10 +1,29 @@
 import UserProfileFriendsCSS from './userProfileFriends.module.scss';
 //hooks
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {FC} from 'react';
 
-export const UserProfileFriends = () => {
+interface UserProps {
+    searchedInput:string
+}
 
-    const [users, setUsers] = useState([{
+interface FilteredUsers {
+    id: number,
+    name: string,
+    description: string,
+    email: string,
+    inviteToFriend: string,
+    friendsList: [
+        {
+            id: number,
+            name: string
+        }
+    ]
+}
+
+export const UserProfileFriends: FC<UserProps> = ({searchedInput}: UserProps) => {
+
+    const [users, setUsers] = useState<FilteredUsers[]>([{
         "id": 1,
         "name": "User1",
         "description": "First user",
@@ -82,11 +101,26 @@ export const UserProfileFriends = () => {
             }
         ]
     }
-    ])
+    ]);
+
+    const [filteredUsers, setFilteredUsers] = useState<FilteredUsers[]>([]);
+
+    useEffect(() => {
+        filterUsers();
+    },[searchedInput]);
+
+    const filterUsers = () => {
+        if(searchedInput.length === 0){
+            setFilteredUsers(users);
+        }else{
+            const regex = new RegExp(`^${searchedInput}`, "i");
+            setFilteredUsers(users.filter(val => (val.name).match(regex)))
+        }
+    }
 
     return (
         <div className={UserProfileFriendsCSS.mainContainer}>
-            {users.map(val => {
+            {filteredUsers.map(val => {
                 return(
                     <div className={UserProfileFriendsCSS.mainContainer__friendContainer}>
                         <div className={UserProfileFriendsCSS.mainContainer__friendContainer__avatarContainer}>

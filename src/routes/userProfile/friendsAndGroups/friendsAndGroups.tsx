@@ -1,6 +1,6 @@
 import FriendsAndGroupsCSS from './friendsAndGroups.module.scss';
 //hooks
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 //components
 import { UserProfileGroups } from './userProfileGroups/UserProfileGroups';
 import { UserProfileFriends } from './userProfileFriends/UserProfileFriends';
@@ -8,12 +8,13 @@ import { UserProfileFriends } from './userProfileFriends/UserProfileFriends';
 export const FriendsAndGroups = () => {
 
     const [componentType, setComponentType] = useState("friends");
+    const [searchbarInput, setSearchbarInput] = useState("");
 
     const renderComponent = () => {
         if (componentType === "friends") {
-            return <UserProfileFriends />
+            return <UserProfileFriends searchedInput={searchbarInput}/>
         } else if (componentType === "groups") {
-            return <UserProfileGroups />
+            return <UserProfileGroups searchedInput={searchbarInput}/>
         }
     }
 
@@ -60,7 +61,7 @@ export const FriendsAndGroups = () => {
                 {renderButtons()}
             </div>
             <div className={FriendsAndGroupsCSS.mainContainer__searchbarContainer}>
-                <input placeholder="type to search"></input>
+                <input placeholder="type to search" onChange={(e) => setSearchbarInput(e.target.value)}></input>
             </div>
             <div className={FriendsAndGroupsCSS.mainContainer__content}>
                 {renderComponent()}
