@@ -1,6 +1,6 @@
 import UserNortificationsCSS from './userNortifications.module.scss';
 //components
-import { FriendRequests } from './friendRequest/FriendRequests';
+import { FriendInviteNortification } from './friendInviteNortification/FriendInviteNortification';
 
 export const UserNortifications = () => {
 
@@ -9,7 +9,10 @@ export const UserNortifications = () => {
             <div className={UserNortificationsCSS.mainContainer__contentDescription}>
                 <h2>nortifications</h2>
             </div>
-            <FriendRequests/>
+            
+            <div className={UserNortificationsCSS.mainContainer__nortificationsContainer}>
+                <FriendInviteNortification/>
+            </div>
         </div>
     )
 }

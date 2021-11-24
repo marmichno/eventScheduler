@@ -1,4 +1,4 @@
-import FriendRequestCSS from './friendRequest.module.scss';
+import FriendInviteNortificationCSS from './friendInviteNortification.module.scss';
 //hooks
 import { useEffect, useState } from "react";
 //requests
@@ -12,7 +12,7 @@ interface FriendRequest {
     invitationType: string
 }
 
-export const FriendRequests = () => {
+export const FriendInviteNortification = () => {
 
     const [nortificationsFriendRequest, setNortificationsFriendRequest] = useState<Array<FriendRequest>>([]);
 
@@ -23,8 +23,6 @@ export const FriendRequests = () => {
     const userNortificationsGetRequest = async () => {
         const response = await userFriendRequest();
         if (response.status === 200) {
-            console.log(response.status);
-            // setNortificationsFriendRequest(response.data);
             setNortificationsFriendRequest([
                 {
                     "id": 1,
@@ -77,15 +75,26 @@ export const FriendRequests = () => {
             {nortificationsFriendRequest.length > 0 ?
                 nortificationsFriendRequest.map(val => {
                     return (
-                        <div className={FriendRequestCSS.mainContainer}>
-                            <div className={FriendRequestCSS.mainContainer__contentContainer}>
-                                <div className={FriendRequestCSS.mainContainer__contentContainer__avatar}>
+                        <div className={FriendInviteNortificationCSS.mainContainer}>
+                            <div className={FriendInviteNortificationCSS.mainContainer__contentContainer}>
+                                <div className={FriendInviteNortificationCSS.mainContainer__contentContainer__avatar}>
                                     <img src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"></img>
                                 </div>
-                                <div className={FriendRequestCSS.mainContainer__contentContainer__textContent}>
+                                <div className={FriendInviteNortificationCSS.mainContainer__contentContainer__textContent}>
                                     <p>Friend request from: Owchachi</p>
-                                    <div className={FriendRequestCSS.mainContainer__contentContainer__textContent__buttons}>
-                                        <button>accept</button><button>decline</button>
+                                    <div className={FriendInviteNortificationCSS.mainContainer__contentContainer__textContent__buttons}>
+                                        <button
+                                            className={`${FriendInviteNortificationCSS.mainContainer__contentContainer__textContent__buttons__button} 
+                                        ${FriendInviteNortificationCSS['mainContainer__contentContainer__textContent__buttons__button--accept']}`}
+                                        >
+                                            accept
+                                        </button>
+                                        <button
+                                            className={`${FriendInviteNortificationCSS.mainContainer__contentContainer__textContent__buttons__button} 
+                                        ${FriendInviteNortificationCSS['mainContainer__contentContainer__textContent__buttons__button--decline']}`}
+                                        >
+                                            decline
+                                        </button>
                                     </div>
                                 </div>
                             </div>

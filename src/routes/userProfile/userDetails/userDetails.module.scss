@@ -10,6 +10,7 @@
     align-items:space-around;
     border-left:3px solid $highlight;
     border-top: 3px solid $highlight;
+    box-shadow: -6px 6px 0px 0px $highlight;
 
     &__avatarContainer {
         background-color: $contentBackground;
