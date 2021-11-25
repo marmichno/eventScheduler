@@ -20,7 +20,6 @@ export const UserDetails = () => {
 
     useEffect(() => {
         const userInfo = localStorage.getItem('userInfo');
-        console.log(userInfo);
 
         if (userInfo !== null) {
             setDetailsUserInfo(JSON.parse(userInfo));

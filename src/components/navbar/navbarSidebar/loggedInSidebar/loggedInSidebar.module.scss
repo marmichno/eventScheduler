@@ -1,0 +1,32 @@
+//variables, mixins
+@import '../../../../styles/resources.scss';
+
+.mainContainer{
+    width:100%;
+    height:92.5%;
+
+    &__routeContainer{
+        height:15%;
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        a{
+            font-size:2rem;
+            text-decoration:none;
+        }
+    }
+
+    &__buttonsContainer{
+        width:100%;
+        height:10%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        button{
+            @include button();
+        }
+    }
+}
