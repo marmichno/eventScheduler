@@ -1,43 +1,96 @@
 //variables, mixins
-@import '../../../../styles/resources.scss';
+@import "../../../../styles/resources.scss";
 
+.mainContainer {
+    height: 92.5%;
+    width: 100%;
+    background-color: $background;
+    z-index: 5;
+    position: absolute;
+    top: 7.5%;
+    right: 0;
 
-.mainContainer{
-    height:92.5%;
-    width:100%;
-    background-color:$background;
-    z-index:5;
-    position:absolute;
-    top:7.5%;
-    right:0;
+    &__topFillerContainer {
+        width: 100%;
+        height: 40%;
+        
+        &__imgContainer {
+            width: 100%;
+            height: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
 
-    &__routesContainer{
-        width:100%;
-        height:100%;
-        display:flex;
-        justify-content:center;
-        align-items:space-around;
-        flex-direction:column;
+            img {
+                width: 70%;
+                height: 100%;
+            }
+        }
 
-        &__route{
-            width:100%;
-            height:33.3%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            background-color:rgba(32, 8, 97, 0.801);
-            background-image:url("../../../../resources/img/loginBg.png");
-            background-blend-mode:saturation;
-            background-size:65%;
-            background-repeat:no-repeat;
-            background-position:center;
+        &__descriptionContainer {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
 
-            a{
-                text-decoration:none;
-                cursor:pointer;
-                font-size:2em;
+            p{
+                max-width:90%;
             }
         }
     }
-}   
+
+    &__loggedUserContainer {
+        width: 100%;
+        height: 20%;
+        display: flex;
+
+        &__avatar {
+            width: 50%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__description {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+
+    &__routeContainer {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $textOnWhiteBackground;
+
+        &:hover {
+            background-color: $contentBackground;
+            color: $textOnDarkBackground;
+        }
+
+        a {
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        a,
+        a:visited,
+        a:hover,
+        a:active {
+            color: inherit;
+        }
+    }
+}

@@ -8,6 +8,7 @@
     background-color:$contentBackground;
     overflow-y:scroll;
     position:relative;
+    color: $textOnDarkBackground;
 
     &::-webkit-scrollbar {
         display: none; /* Chrome, Safari, Opera */

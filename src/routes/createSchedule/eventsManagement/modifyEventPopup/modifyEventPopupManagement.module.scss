@@ -11,6 +11,7 @@
     justify-content:center;
     flex-direction:column;
     background-color:$contentBackground;
+    color: $textOnDarkBackground;
 
     &__close{
         width:100%;
@@ -21,6 +22,7 @@
         
         button{
             background-color:transparent;
+            color: $textOnDarkBackground;
             font-size:2em;
             margin:0.5em;
             border:none;

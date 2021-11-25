@@ -5,17 +5,56 @@
     width:100%;
     height:92.5%;
 
+    &__loggedUserContainer{
+        width:100%;
+        height:20%;
+        display:flex;
+
+        &__avatar{
+            width:50%;
+            height:100%;
+
+            img{
+                width:100%;
+                height:100%;
+            }
+        }
+
+        &__description{
+            width:50%;
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+
+            h2{
+                color: $textOnWhiteBackground;
+            }
+        }
+    }
+
     &__routeContainer{
-        height:15%;
+        height:10%;
         width:100%;
         display:flex;
         align-items:center;
         justify-content:center;
+        color: $textOnWhiteBackground;
+
+        &:hover{
+            background-color:$contentBackground;
+            color:$textOnDarkBackground;
+        }
 
         a{
-            font-size:2rem;
+            font-size:1.5rem;
             text-decoration:none;
         }
+
+        a, a:visited, a:hover, a:active {
+            color: inherit;
+          }
     }
 
     &__buttonsContainer{
