@@ -2,6 +2,10 @@ import PublicUserProfileCSS from './publicUserProfile.module.scss';
 //hooks
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+//components
+import { PublicUserSharedFriends } from './publicUserSharedFriends/PublicUserSharedFriends';
+import { PublicUserSharedGroups } from './publicUserSharedGroups/PublicUserSharedGroups';
+import { PublicUserDetails } from './publicUserDetails/PublicUserDetails';
 //requests
 import { getUserByName } from './requests/getUserByName';
 
@@ -23,39 +27,49 @@ export const PublicUserProfile = (state: any) => {
 
     const location = useLocation();
 
-    const [userExists, setUserExists] = useState(false);
-    const [userData, setUserData] = useState<User[]>([]);
+    const [userExists, setUserExists] = useState(true);
+    const [userData, setUserData] = useState<User | undefined>(undefined);
 
     useEffect(() => {
         checkIfUserExists()
-    },[])
+    }, [])
 
     const checkIfUserExists = async () => {
         const passedState = state.location.state;
         let response;
 
-        if(passedState !== undefined){
+        if (passedState !== undefined) {
             response = await getUserByName(passedState.userName);
             console.log(response.data);
-        }else{
+        } else {
             const url = location.pathname;
             const userName = url.split("/")[2];
             response = await getUserByName(userName);
         }
 
-        if(response.length > 0){
+        if (response.data.length > 0) {
             setUserExists(true);
-            setUserData(response);
-        }else if(response.length === 0){
+            setUserData(response.data[0]);
+        } else if (response.data.length === 0) {
             setUserExists(false);
         }
     }
 
-    const renderUser = () => {
-        if(userExists){
-            return(
+    const renderUserData = () => {
+        if (userExists) {
+            if (userData !== undefined) {
+                return (
+                    <>
+                        <PublicUserDetails passedUserData={{name: userData.name, description: userData.description, email: userData.email}}/>
+                        <PublicUserSharedFriends passedUserFriends={{friendsList: userData.friendsList}}/>
+                        <PublicUserSharedGroups />
+                    </>
+                )
+            }
+        } else {
+            return (
                 <div>
-                    <p>{userData.name}</p>
+                    <h2>something went wrong</h2>
                 </div>
             )
         }
@@ -63,7 +77,7 @@ export const PublicUserProfile = (state: any) => {
 
     return (
         <div className={PublicUserProfileCSS.mainContainer}>
-            public user profile
+            {renderUserData()}
         </div>
     )
 }
