@@ -1,0 +1,99 @@
+//variables, mixins
+@import "../../../styles/resources.scss";
+
+.mainContainer {
+    width: 100vw;
+    height: 92.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 2;
+
+    &__contentContainer {
+        width: 60%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        &__avatarContainer {
+            height: 90%;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-direction: column;
+
+            &__imageContainer {
+                width: 100%;
+                height: 70%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 36% 64% 33% 67% / 56% 36% 64% 44%;
+                    z-index: 2;
+                    border-bottom: 4px solid $highlight;
+                }
+
+                &__shadow {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 36% 64% 33% 67% / 56% 36% 64% 44%;
+                    background-color: $highlight;
+                    z-index: 1;
+                    position: absolute;
+                    transform: translateY(10%);
+                    opacity: 0.05;
+                    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+                }
+            }
+
+            &__usernameAndEmailContainer{
+                width:100%;
+                height:30%;
+                text-align:center;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                flex-direction:column;
+
+                &__username{
+                    font-size:2.5em;
+                }
+
+                &__email{
+                    font-size:1.3em;
+                    opacity:0.2;
+                }
+            }
+        }
+
+        &__detailsContainer{
+            width:50%;
+            height:10%;
+            text-align:center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        &__inviteToFriendsContainer{
+            width:50%;
+            height:10%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            button{
+                @include button();
+            }
+        }
+    }
+}

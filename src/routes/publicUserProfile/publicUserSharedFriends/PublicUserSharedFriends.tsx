@@ -15,7 +15,7 @@ export const PublicUserSharedFriends = ({ passedUserFriends }: { passedUserFrien
     console.log(passedUserFriends);
 
     return (
-        <div>
+        <div className={PublicUserSharedFriendsCSS.mainContainer}>
             public user shared friends
         </div>
     )

@@ -2,7 +2,7 @@ import PublicUserSharedGroupsCSS from './publicUserSharedGroups.module.scss';
 
 export const PublicUserSharedGroups = () => {
     return(
-        <div>
+        <div className={PublicUserSharedGroupsCSS.mainContainer}>
             public user shared groups
         </div>
     )

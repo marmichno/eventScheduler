@@ -6,6 +6,7 @@ import { useLocation } from 'react-router';
 import { PublicUserSharedFriends } from './publicUserSharedFriends/PublicUserSharedFriends';
 import { PublicUserSharedGroups } from './publicUserSharedGroups/PublicUserSharedGroups';
 import { PublicUserDetails } from './publicUserDetails/PublicUserDetails';
+import { Navbar } from '../../components/navbar/Navbar';
 //requests
 import { getUserByName } from './requests/getUserByName';
 
@@ -77,6 +78,7 @@ export const PublicUserProfile = (state: any) => {
 
     return (
         <div className={PublicUserProfileCSS.mainContainer}>
+            <Navbar/>
             {renderUserData()}
         </div>
     )
