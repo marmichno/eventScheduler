@@ -1,7 +1,7 @@
 import PublicUserDetailsCSS from './publicUserDetails.module.scss';
 
 interface UserData {
-
+    id: number,
     name: string,
     description: string,
     email: string

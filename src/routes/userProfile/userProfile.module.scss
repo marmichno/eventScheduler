@@ -1,6 +1,7 @@
 .mainContainer{
     width:100vw;
-    height:100vh;
+    height:92.5vh;
+    margin-top:7.5vh;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -9,7 +10,7 @@
 
     &__contentContainer{
         width:97.5%;
-        height:92.5%;
+        height:100%;
         display:grid;
         grid-template-rows: 31.9% 3.3% 28.6% 8.3% 13% 16.6%;
         grid-template-columns: repeat(2, 1fr);

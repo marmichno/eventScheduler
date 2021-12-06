@@ -61,7 +61,7 @@ export const PublicUserProfile = (state: any) => {
             if (userData !== undefined) {
                 return (
                     <>
-                        <PublicUserDetails passedUserData={{name: userData.name, description: userData.description, email: userData.email}}/>
+                        <PublicUserDetails passedUserData={{id:userData.id, name: userData.name, description: userData.description, email: userData.email}}/>
                         <PublicUserSharedFriends passedUserFriends={{friendsList: userData.friendsList}}/>
                         <PublicUserSharedGroups />
                     </>
