@@ -61,8 +61,22 @@ export const PublicUserProfile = (state: any) => {
             if (userData !== undefined) {
                 return (
                     <>
-                        <PublicUserDetails passedUserData={{id:userData.id, name: userData.name, description: userData.description, email: userData.email}}/>
-                        <PublicUserSharedFriends passedUserFriends={{friendsList: userData.friendsList}}/>
+                        <PublicUserDetails passedUserData={
+                            {
+                                id: userData.id,
+                                inviteToFriend: userData.inviteToFriend,
+                                name: userData.name,
+                                description: userData.description,
+                                email: userData.email
+                            }
+                        }
+                        />
+                        <PublicUserSharedFriends passedUserFriends={
+                            {
+                                friendsList: userData.friendsList
+                            }
+                        }
+                        />
                         <PublicUserSharedGroups />
                     </>
                 )
@@ -78,7 +92,7 @@ export const PublicUserProfile = (state: any) => {
 
     return (
         <div className={PublicUserProfileCSS.mainContainer}>
-            <Navbar/>
+            <Navbar />
             {renderUserData()}
         </div>
     )

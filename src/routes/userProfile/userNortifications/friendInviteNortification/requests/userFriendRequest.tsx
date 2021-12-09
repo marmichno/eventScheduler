@@ -6,6 +6,7 @@ export const userFriendRequest = async () =>{
     try{
         const request = await axios.get('http://localhost:8080/api/user/invitation');
         const response = await request;
+        console.log(response);
         return response;
     }catch(error:any){
         if (error.response) {

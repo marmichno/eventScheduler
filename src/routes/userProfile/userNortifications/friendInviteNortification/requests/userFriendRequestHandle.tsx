@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export const userFriendRequestHandle = async (id: number, action:boolean) => {
+export const userFriendRequestHandle = async (id: number, action: boolean) => {
 
     const config = {
         headers: {
@@ -9,11 +9,15 @@ export const userFriendRequestHandle = async (id: number, action:boolean) => {
         }
     }
 
-    const body = JSON.stringify({ invitationId: id });
+    const body = JSON.stringify(action);
+
+    console.log(body);
 
     try {
         const request = await axios.post(`http://localhost:8080/api/user/invitation/${id}`, body, config);
+        console.log(request);
         const response = await request;
+        console.log(response);
         return response;
     } catch (error: any) {
         if (error.response) {

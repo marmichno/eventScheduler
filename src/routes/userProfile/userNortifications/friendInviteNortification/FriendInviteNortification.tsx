@@ -19,7 +19,11 @@ export const FriendInviteNortification = () => {
 
     useEffect(() => {
         userNortificationsGetRequest();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        console.log(nortificationsFriendRequest);
+    },[nortificationsFriendRequest]);
 
     const userNortificationsGetRequest = async () => {
         const response = await userFriendRequest();
@@ -28,11 +32,11 @@ export const FriendInviteNortification = () => {
         }
     }
 
-    const userFriendRequestPostHandle = async (e:any) => {
+    const userFriendRequestPostHandle = async (e: any) => {
         const eventId = e.target.dataset.eventid;
         const action = e.target.dataset.action;
         const response = await userFriendRequestHandle(eventId, action);
-        if(response.status === 200){
+        if (response.status === 200) {
             userNortificationsGetRequest();
         }
     }
@@ -53,18 +57,18 @@ export const FriendInviteNortification = () => {
                                         <button
                                             className={`${FriendInviteNortificationCSS.mainContainer__contentContainer__textContent__buttons__button} 
                                         ${FriendInviteNortificationCSS['mainContainer__contentContainer__textContent__buttons__button--accept']}`}
-                                        data-action={true}
-                                        data-eventid={val.id}
-                                        onClick={(e) => userFriendRequestPostHandle(e)}
+                                            data-action={true}
+                                            data-eventid={val.id}
+                                            onClick={(e) => userFriendRequestPostHandle(e)}
                                         >
                                             accept
                                         </button>
                                         <button
                                             className={`${FriendInviteNortificationCSS.mainContainer__contentContainer__textContent__buttons__button} 
                                         ${FriendInviteNortificationCSS['mainContainer__contentContainer__textContent__buttons__button--decline']}`}
-                                        data-action={false}
-                                        data-eventid={val.id}
-                                        onClick={(e) => userFriendRequestPostHandle(e)}
+                                            data-action={false}
+                                            data-eventid={val.id}
+                                            onClick={(e) => userFriendRequestPostHandle(e)}
                                         >
                                             decline
                                         </button>

@@ -85,8 +85,12 @@
             align-items:center;
             justify-content:center;
 
-            button{
+            &__btn{
                 @include button();
+
+                &--notActive{
+                    opacity:0.3;
+                }
             }
         }
     }
