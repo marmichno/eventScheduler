@@ -1,0 +1,25 @@
+//variables, mixins
+@import '../../../../../../styles/resources.scss';
+
+.eventTypesContainer{
+    width:100%;
+    height:10%;
+    display:flex;
+    background-color:$darkerContentBackground;
+
+    &__eventType{
+        width:50%;
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+        opacity:0.1;
+        border:solid 1px;
+
+        &--active{
+            @extend .eventTypesContainer__eventType;
+            opacity:1;
+        }
+    }
+}

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //components
 import { Login } from './routes/login/Login';
 import { Register } from './routes/register/Register';
-import { CreateScheduleContainer } from './routes/createSchedule/CreateScheduleContainer';
+import { CreateScheduleContainer } from './routes/createSchedule/CreateScheduleMainContainer';
 import { EventsFinderMain } from './routes/eventsFinder/EventsFinderMain';
 import { UserProfile } from './routes/userProfile/UserProfile';
 import { PublicUserProfile } from './routes/publicUserProfile/PublicUserProfile';
