@@ -1,16 +1,16 @@
 // css
 import CreateScheduleContainerCSS from './createScheduleContainer.module.scss';
 // components
-import {MonthSchedule} from './month/monthSchedule/MonthSchedule';
-import { WeekSchedule } from './week/weekSchedule/WeekSchedule';
-import { DaySchedule } from './day/DaySchedule';
-import {CreateScheduleChangeDate} from '../date/CreateScheduleChangeDateContainer';
-import { ScheduleManagement } from '../scheduleManagement/ScheduleManagement';
-import { Navbar } from '../../../components/navbar/Navbar';
+import {MonthSchedule} from './schedule/month/monthSchedule/MonthSchedule';
+import { WeekSchedule } from './schedule/week/weekSchedule/WeekSchedule';
+import { DaySchedule } from './schedule/day/DaySchedule';
+import {CreateScheduleChangeDate} from './date/CreateScheduleChangeDateContainer';
+import { ScheduleManagement } from './scheduleManagement/ScheduleManagement';
+import { Navbar } from '../../components/navbar/Navbar';
 //hooks
-import { useAppSelector } from '../../../hooks';
+import { useAppSelector } from '../../hooks';
 
-export const CreateScheduleContainer: React.FC = () => {
+export const CreateScheduleContainer = () => {
 
     const scheduleType = useAppSelector(state => state.scheduleTypeReducer);
 

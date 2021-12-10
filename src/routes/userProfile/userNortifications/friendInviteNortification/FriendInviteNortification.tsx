@@ -21,10 +21,6 @@ export const FriendInviteNortification = () => {
         userNortificationsGetRequest();
     }, []);
 
-    useEffect(() => {
-        console.log(nortificationsFriendRequest);
-    },[nortificationsFriendRequest]);
-
     const userNortificationsGetRequest = async () => {
         const response = await userFriendRequest();
         if (response.status === 200) {

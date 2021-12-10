@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 export const userFriendRequest = async () =>{
 
     try{
-        const request = await axios.get('http://localhost:8080/api/user/invitation');
+        const request = await axios.get('localhost:8080/api/user/invitation?status=WAITING&type=RECEIVED');
         const response = await request;
         console.log(response);
         return response;
