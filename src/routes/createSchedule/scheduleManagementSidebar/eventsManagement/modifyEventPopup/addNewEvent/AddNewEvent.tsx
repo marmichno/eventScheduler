@@ -11,16 +11,16 @@ export const AddNewEvent = () => {
                 "name": "",
                 "description": "",
                 "dateFrom": "",
+                "timeFrom" : "",
                 "dateTo": "",
+                "timeTo": "",
                 "eventAvailabilityType": "",
                 "maxNumberOfParticipants": "",
-                "eventAddress": {
-                    "houseNumber": "",
-                    "street": "",
-                    "city": "",
-                    "state": "",
-                    "coordinates": ""
-                }
+                "houseNumber": "",
+                "street": "",
+                "city": "",
+                "state": "",
+                "coordinates": ""
             }}
                 // validationSchema={validationSchema}
                 onSubmit={data => {
@@ -35,10 +35,16 @@ export const AddNewEvent = () => {
                         <InputField label="Event Description" name="description" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="Start date" name="dateFrom" type="text" />
+                        <InputField label="Start time" name="timeFrom" type="time" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="End date" name="date To" type="text" />
+                        <InputField label="Start date" name="dateFrom" type="date" />
+                    </div>
+                    <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
+                        <InputField label="End time" name="timeTo" type="time" />
+                    </div>
+                    <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
+                        <InputField label="End date" name="dateTo" type="date" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
                         <InputField label="Event type" name="eventAvailabilityType" type="text" />

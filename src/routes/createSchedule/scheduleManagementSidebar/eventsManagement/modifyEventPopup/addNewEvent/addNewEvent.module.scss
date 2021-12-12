@@ -9,6 +9,7 @@
     align-items:center;
     justify-content:center;
     overflow-y:scroll;
+    position:relative;
 
     &__formContainer{
         display:flex;
@@ -16,6 +17,8 @@
         justify-content:center;
         flex-direction:column;
         width:100%;
+        position:absolute;
+        top:0;
 
         &__inputContainer{
             width:75%;
