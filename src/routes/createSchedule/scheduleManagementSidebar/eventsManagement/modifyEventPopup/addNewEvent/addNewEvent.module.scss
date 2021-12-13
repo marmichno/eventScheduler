@@ -21,7 +21,7 @@
         top:0;
 
         &__inputContainer{
-            width:75%;
+            width:65%;
 
             label{
                 font-size:1.5rem;
@@ -35,6 +35,7 @@
                 text-align:center;
                 font-size:1.2rem;
                 padding:0.5em;
+                color:$textOnDarkBackground;
 
                 &:focus{
                     outline:none;
@@ -44,6 +45,7 @@
 
         button{
             margin-top:2em;
+            margin-bottom:2em;
             @include button();
         }
     }

@@ -3,26 +3,30 @@ import AddNewEventCSS from './addNewEvent.module.scss';
 import { InputField } from '../../../../../../components/inputField/InputField';
 //formik
 import { Formik, Form } from 'formik';
+//validationSchema
+import { addNewEventValidationSchema } from './validationSchema/addNewEventValidationSchema';
 
 export const AddNewEvent = () => {
     return (
         <div className={AddNewEventCSS.mainContainer}>
             <Formik initialValues={{
-                "name": "",
-                "description": "",
-                "dateFrom": "",
-                "timeFrom" : "",
-                "dateTo": "",
-                "timeTo": "",
-                "eventAvailabilityType": "",
-                "maxNumberOfParticipants": "",
-                "houseNumber": "",
-                "street": "",
-                "city": "",
-                "state": "",
-                "coordinates": ""
+                name: "",
+                description: "",
+                dateFrom: "",
+                timeFrom: "",
+                dateTo: "",
+                timeTo: "",
+                eventAvailabilityType: "",
+                maxNumberOfParticipants: "",
+                eventAddress: {
+                    houseNumber: "",
+                    street: "",
+                    city: "",
+                    state: "",
+                    coordinates: ""
+                }
             }}
-                // validationSchema={validationSchema}
+                validationSchema={addNewEventValidationSchema}
                 onSubmit={data => {
                     console.log(data);
                 }}
@@ -53,19 +57,16 @@ export const AddNewEvent = () => {
                         <InputField label="Maximum nuber of participants" name="maxNumberOfParticipants" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="Event address" name="eventAddress" type="text" />
+                        <InputField label="House number" name="eventAddress.houseNumber" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="House number" name="houseNumber" type="text" />
+                        <InputField label="Street" name="eventAddress.street" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="Street" name="street" type="text" />
+                        <InputField label="City" name="eventAddress.city" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="City" name="city" type="text" />
-                    </div>
-                    <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="State" name="state" type="text" />
+                        <InputField label="State" name="eventAddress.state" type="text" />
                     </div>
                     <button type="submit">Add Event</button>
                 </Form>

@@ -23,8 +23,10 @@ export const FriendInviteNortification = () => {
 
     const userNortificationsGetRequest = async () => {
         const response = await userFriendRequest();
-        if (response.status === 200) {
-            setNortificationsFriendRequest(response.data);
+        if (response !== undefined) {
+            if (response.status === 200) {
+                setNortificationsFriendRequest(response.data);
+            }
         }
     }
 
