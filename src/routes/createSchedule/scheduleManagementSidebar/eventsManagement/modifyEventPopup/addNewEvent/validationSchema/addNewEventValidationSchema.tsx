@@ -21,13 +21,14 @@ export const addNewEventValidationSchema = Yup.object({
     maxNumberOfParticipants: Yup.number()
         .required("Number of participants is required")
         .min(1, "Must have atleast 1 participant"),
-    houseNumber: Yup.string()
-        .required("House number is required"),
-    street: Yup.string()
-        .required("Street is required"),
-    city: Yup.string()
-        .required("City is required"),
-    state: Yup.string()
-        .required("State is required")
-
+    eventAddress: Yup.object({
+        houseNumber: Yup.string()
+            .required("House number is required"),
+        street: Yup.string()
+            .required("Street is required"),
+        city: Yup.string()
+            .required("City is required"),
+        state: Yup.string()
+            .required("State is required")
+    })
 })

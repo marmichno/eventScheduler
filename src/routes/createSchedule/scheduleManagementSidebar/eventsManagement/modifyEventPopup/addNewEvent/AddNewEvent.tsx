@@ -5,6 +5,8 @@ import { InputField } from '../../../../../../components/inputField/InputField';
 import { Formik, Form } from 'formik';
 //validationSchema
 import { addNewEventValidationSchema } from './validationSchema/addNewEventValidationSchema';
+//requests
+import { createNewEvent } from './requests/creatNewEvent';
 
 export const AddNewEvent = () => {
     return (
@@ -12,23 +14,24 @@ export const AddNewEvent = () => {
             <Formik initialValues={{
                 name: "",
                 description: "",
-                dateFrom: "",
                 timeFrom: "",
-                dateTo: "",
+                dateFrom: "",
                 timeTo: "",
+                dateTo: "",
                 eventAvailabilityType: "",
-                maxNumberOfParticipants: "",
+                maxNumberOfParticipants: 1,
                 eventAddress: {
                     houseNumber: "",
                     street: "",
                     city: "",
                     state: "",
-                    coordinates: ""
+                    coordinates: "XYZ"
                 }
             }}
                 validationSchema={addNewEventValidationSchema}
-                onSubmit={data => {
+                onSubmit={ async (data) => {
                     console.log(data);
+                    const response = await createNewEvent(data);
                 }}
             >
                 <Form className={AddNewEventCSS.mainContainer__formContainer}>

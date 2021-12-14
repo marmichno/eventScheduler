@@ -1,15 +1,18 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { StringLiteralLike } from 'typescript';
 
 interface EventDataTypes {
     "name": string,
     "description": string,
+    "timeFrom": string,
     "dateFrom": string,
+    "timeTo": string,
     "dateTo": string,
     "eventAvailabilityType": string,
     "maxNumberOfParticipants": number,
     "eventAddress": {
-        "houseNumber": number,
+        "houseNumber": string,
         "street": string,
         "city": string,
         "state": string,
@@ -17,7 +20,7 @@ interface EventDataTypes {
     }
 }
 
-export const createNewEvent = async ({ EventData } : { EventData: EventDataTypes }) => {
+export const createNewEvent = async (eventData: EventDataTypes) => {
 
     const config = {
         headers: {
@@ -25,10 +28,27 @@ export const createNewEvent = async ({ EventData } : { EventData: EventDataTypes
         }
     }
 
-    const body = JSON.stringify(EventData);
+    const requestObject = {
+        "name": eventData.name,
+        "description": eventData.description,
+        "dateFrom": `${eventData.dateFrom}T${eventData.timeFrom}:00`,
+        "dateTo": `${eventData.dateTo}T${eventData.timeTo}:00`,
+        "eventAvailabilityType": eventData.eventAvailabilityType,
+        "maxNumberOfParticipants": eventData.maxNumberOfParticipants,
+        "eventAddress": {
+            "houseNumber": eventData.eventAddress.houseNumber,
+            "street": eventData.eventAddress.street,
+            "city": eventData.eventAddress.city,
+            "state": eventData.eventAddress.state,
+            "coordinates": "XYZ"
+        }
+    }
+
+    console.log(requestObject);
+    const body = JSON.stringify(requestObject);
 
     try {
-        const request = await axios.post(`http://localhost:8080/api/event`, body, config);
+        const request = await axios.post(`http://localhost:8080/api/event/`, body, config);
         const response = await request;
         toast.success("Event has been created")
         return response;
