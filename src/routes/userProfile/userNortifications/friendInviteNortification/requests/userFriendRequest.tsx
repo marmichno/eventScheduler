@@ -4,11 +4,12 @@ import {toast} from 'react-toastify';
 export const userFriendRequest = async () =>{
 
     try{
-        const request = await axios.get('localhost:8080/api/user/invitation?status=WAITING&type=RECEIVED');
+        const request = await axios.get('http://localhost:8080/api/user/invitation?status=WAITING&type=RECEIVED');
         const response = await request;
         console.log(response);
         return response;
     }catch(error:any){
+        console.log(error);
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
