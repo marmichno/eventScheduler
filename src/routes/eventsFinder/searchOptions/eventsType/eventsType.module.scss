@@ -1,27 +1,28 @@
 //variables, mixins
-@import '../../../../styles/resources.scss';
+@import "../../../../styles/resources.scss";
 
-.mainContainer{
-    display:flex;
-    width:15%;
-    height:100%;
-    background-color:$background;
-    color:$textOnDarkBackground;
+.mainContainer {
+    display: flex;
+    width: 15%;
+    height: 100%;
+    background-color: $background;
+    color: $textOnDarkBackground;
 
-    div{
-        width:50%;
-        height:100%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
+    &__eventTypeBtn {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $notActive;
+        opacity: 0.3;
+        border:none;
+        outline:none;
+        cursor:pointer;
 
-    &__active{
-        background-color:$highlight;
-    }
-
-    &__notActive{
-        background-color:$notActive;
-        opacity:0.3;
+        &--active {
+            background-color: $highlight;
+            opacity: 1;
+        }
     }
 }

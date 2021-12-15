@@ -81,6 +81,13 @@ export const selectedEventEventFinder = (selectedEventIdEventFinder:number) => {
     }
 }
 
+export const eventsTypeEventFinder = (eventsTypeEventFinder:string) => {
+    return{
+        type: "EVENTSTYPEEVENTFINDER",
+        payload: eventsTypeEventFinder
+    }
+}
+
 //if user logged in
 
 export const isLogged = (isLogged:boolean) => {

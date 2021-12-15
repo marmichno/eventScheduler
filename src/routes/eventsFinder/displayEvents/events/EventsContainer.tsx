@@ -17,12 +17,6 @@ export const EventsContainer = () => {
                     <Searchbar/>
                     <div className={EventsContainerCSS.mainContainer__eventsContainer}>
                         <EventMainPage/>
-                        <EventMainPage/>
-                        <EventMainPage/>
-                        <EventMainPage/>
-                        <EventMainPage/>
-                        <EventMainPage/>
-                        <EventMainPage/>
                     </div>
                 </>
             )
