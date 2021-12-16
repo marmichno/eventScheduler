@@ -74,7 +74,7 @@ export const showNavbar = (showNavbar:boolean) => {
 
 //events main page
 
-export const selectedEventEventFinder = (selectedEventIdEventFinder:number) => {
+export const selectedEventEventFinder = (selectedEventIdEventFinder:number | null) => {
     return{
         type: "SELECTEVENTEVENTFINDER",
         payload: selectedEventIdEventFinder

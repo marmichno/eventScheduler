@@ -43,6 +43,7 @@ function App() {
       />
       <Switch>
         <Route path='/' exact component={EventsFinderMain} />
+        <Route path='/event/' component={EventsFinderMain} />
         <Route path='/login' exact component={Login} />
         <Route path='/Register' exact component={Register} />
         <Route path='/userProfile' exact component={UserProfile} />

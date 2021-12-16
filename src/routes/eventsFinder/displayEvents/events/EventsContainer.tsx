@@ -5,29 +5,54 @@ import { Searchbar } from '../../searchbar/Searchbar';
 import { SelectedEventMainPage } from './selectedEventMainPage/SelectedEventMainPage';
 //hooks
 import { useAppSelector } from '../../../../hooks';
+import { useAppDispatch } from '../../../../hooks';
+import { useEffect} from 'react';
+import { useLocation } from 'react-router';
+//actions
+import { selectedEventEventFinder } from '../../../../actions';
 
 export const EventsContainer = () => {
 
+    const location = useLocation();
+    const url = location.pathname;
+    const eventId = url.split("/")[2];
     const selectedEvent = useAppSelector(state => state.selectEventEventFinderReducer);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        checkIfEventIsSelected();
+    }, [])
+
+    const checkIfEventIsSelected = () => {
+        if (selectedEvent === null) {
+            if (eventId === undefined) {
+                return
+            } else {
+                dispatch(selectedEventEventFinder(parseInt(eventId)))
+            }
+        }
+    }
 
     const renderEvents = () => {
-        if(selectedEvent === 0){
-            return(
+        if (eventId === undefined || selectedEvent === null) {
+            return (
                 <>
-                    <Searchbar/>
+                    <Searchbar />
                     <div className={EventsContainerCSS.mainContainer__eventsContainer}>
-                        <EventMainPage/>
+                        <EventMainPage />
                     </div>
                 </>
             )
-        }else if(selectedEvent !== 0){
-            return(
-                <SelectedEventMainPage/>
+        } else if (selectedEvent !== 0) {
+            return (
+                <>
+                    <SelectedEventMainPage />
+                </>
             )
         }
     }
 
-    return(
+    return (
         <div className={EventsContainerCSS.mainContainer}>
             {renderEvents()}
         </div>

@@ -1,8 +1,8 @@
 import EventMainPageCSS from './eventMainPage.module.scss';
 //icons
 import { CategoriesIcons } from '../../../../../components/categoriesIcons/CategoriesIcons';
-import {MdDateRange} from 'react-icons/md';
-import {MdPlace} from 'react-icons/md';
+import { MdDateRange } from 'react-icons/md';
+import { MdPlace } from 'react-icons/md';
 //hooks
 import { useAppSelector } from '../../../../../hooks';
 import { useAppDispatch } from '../../../../../hooks';
@@ -10,9 +10,10 @@ import { useEffect, useState } from 'react';
 //actions
 import { selectedEventEventFinder } from '../../../../../actions';
 //requests
-import {eventsFinderGetEvents} from './request/eventsFinderGetEvents';
+import { eventsFinderGetEvents } from './request/eventsFinderGetEvents';
 
 interface Event {
+    "id": number,
     "name": string,
     "description": string,
     "dateFrom": string,
@@ -40,16 +41,12 @@ export const EventMainPage = () => {
     const [eventsFinderEvents, setEventsFinderEvents] = useState<Event[]>([]);
 
     const dispatch = useAppDispatch();
-    const eventType = useAppSelector(state => state.selectEventTypeEventFinderReducer)
-    //dispatch(selectedEventEventFinder(1));
+    const eventType = useAppSelector(state => state.selectEventTypeEventFinderReducer);
+
 
     useEffect(() => {
         fetchEvents();
-    },[eventType]);
-
-    useEffect(() => {
-        console.log(eventsFinderEvents);
-    },[eventsFinderEvents]);
+    }, [eventType]);
 
     const fetchEvents = async () => {
         const response = await eventsFinderGetEvents(eventType);
@@ -60,39 +57,47 @@ export const EventMainPage = () => {
         }
     }
 
+    const chooseEvent = (e: any) => {
+        const eventId = e.target.dataset.eventid;
+        if (eventId !== undefined) {
+            dispatch(selectedEventEventFinder(eventId));
+        }
+    }
+
     const eventsRender = () => {
-        if(eventsFinderEvents.length > 0){
-            return(
+        if (eventsFinderEvents.length > 0) {
+            return (
                 eventsFinderEvents.map(val => {
-                    return(
-                        <div className={EventMainPageCSS.mainContainer} onClick={() => dispatch(selectedEventEventFinder(1))}>
+                    return (
+                        <div className={EventMainPageCSS.mainContainer}>
+                            <div data-eventid={val.id} className={EventMainPageCSS.mainContainer__onClickOverlay} onClick={(e) => chooseEvent(e)}></div>
                             <div className={EventMainPageCSS.mainContainer__icon}></div>
                             <div className={EventMainPageCSS.mainContainer__description}>
                                 <div><h2>{val.name}</h2></div>
                                 <div className={EventMainPageCSS.mainContainer__description__city}>
                                     <div className={EventMainPageCSS.mainContainer__description__city__text}><p>{val.address.city}</p></div>
-                                    <div className={EventMainPageCSS.mainContainer__description__city__icon}><MdPlace/></div>
+                                    <div className={EventMainPageCSS.mainContainer__description__city__icon}><MdPlace /></div>
                                 </div>
                                 <div className={EventMainPageCSS.mainContainer__description__time}>
                                     <div className={EventMainPageCSS.mainContainer__description__time__text}><p>{val.dateFrom}</p></div>
-                                    <div className={EventMainPageCSS.mainContainer__description__time__icon}><MdDateRange/></div>
+                                    <div className={EventMainPageCSS.mainContainer__description__time__icon}><MdDateRange /></div>
                                 </div>
                             </div>
                             <div className={EventMainPageCSS.mainContainer__additionalInfo}>
                                 <div className={EventMainPageCSS.mainContainer__additionalInfo__availability}>{val.participantList.length}/{val.maxNumberOfParticipants}</div>
-                                <div className={EventMainPageCSS.mainContainer__additionalInfo__category}><CategoriesIcons color="red" size="1.5rem" iconType="music"/></div>
+                                <div className={EventMainPageCSS.mainContainer__additionalInfo__category}><CategoriesIcons color="red" size="1.5rem" iconType="music" /></div>
                             </div>
                         </div>
                     )
                 })
             )
-        }else{
+        } else {
             return <></>
         }
     }
 
 
-    return(
+    return (
         <>
             {eventsRender()}
         </>

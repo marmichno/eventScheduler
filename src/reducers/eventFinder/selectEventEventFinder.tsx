@@ -1,5 +1,5 @@
 
-const selectEventEventFinderReducer = (state = 0, action: { payload: number; type: any; }) => {
+const selectEventEventFinderReducer = (state = null, action: { payload: number | null; type: any; }) => {
 
     const payload = action.payload;
 
