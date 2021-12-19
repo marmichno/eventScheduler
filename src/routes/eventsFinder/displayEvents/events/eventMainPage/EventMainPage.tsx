@@ -7,6 +7,7 @@ import { MdPlace } from 'react-icons/md';
 import { useAppSelector } from '../../../../../hooks';
 import { useAppDispatch } from '../../../../../hooks';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 //actions
 import { selectedEventEventFinder } from '../../../../../actions';
 //requests
@@ -38,9 +39,8 @@ interface Event {
 
 export const EventMainPage = () => {
 
+    const history = useHistory();
     const [eventsFinderEvents, setEventsFinderEvents] = useState<Event[]>([]);
-
-    const dispatch = useAppDispatch();
     const eventType = useAppSelector(state => state.selectEventTypeEventFinderReducer);
 
 
@@ -60,7 +60,10 @@ export const EventMainPage = () => {
     const chooseEvent = (e: any) => {
         const eventId = e.target.dataset.eventid;
         if (eventId !== undefined) {
-            dispatch(selectedEventEventFinder(eventId));
+            const location = {
+                pathname: `/event/${eventId}`
+            }
+            history.push(location);
         }
     }
 

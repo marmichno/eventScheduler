@@ -6,7 +6,7 @@ import { SelectedEventMainPage } from './selectedEventMainPage/SelectedEventMain
 //hooks
 import { useAppSelector } from '../../../../hooks';
 import { useAppDispatch } from '../../../../hooks';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 //actions
 import { selectedEventEventFinder } from '../../../../actions';
@@ -16,25 +16,9 @@ export const EventsContainer = () => {
     const location = useLocation();
     const url = location.pathname;
     const eventId = url.split("/")[2];
-    const selectedEvent = useAppSelector(state => state.selectEventEventFinderReducer);
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        checkIfEventIsSelected();
-    }, [])
-
-    const checkIfEventIsSelected = () => {
-        if (selectedEvent === null) {
-            if (eventId === undefined) {
-                return
-            } else {
-                dispatch(selectedEventEventFinder(parseInt(eventId)))
-            }
-        }
-    }
 
     const renderEvents = () => {
-        if (eventId === undefined || selectedEvent === null) {
+        if (eventId === undefined) {
             return (
                 <>
                     <Searchbar />
@@ -43,7 +27,7 @@ export const EventsContainer = () => {
                     </div>
                 </>
             )
-        } else if (selectedEvent !== 0) {
+        } else if (eventId !== undefined) {
             return (
                 <>
                     <SelectedEventMainPage />

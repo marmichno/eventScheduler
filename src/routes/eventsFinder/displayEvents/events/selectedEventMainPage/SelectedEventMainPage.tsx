@@ -3,8 +3,9 @@ import SelectedEventMainPageCSS from './selectedEventMainPage.module.scss';
 import { selectedEventEventFinder } from '../../../../../actions';
 //hooks
 import { useEffect,useState } from 'react';
-import { useAppDispatch } from '../../../../../hooks';
-import { useAppSelector } from '../../../../../hooks';
+import { useHistory } from 'react-router-dom';
+
+import { useLocation } from 'react-router';
 //icons
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 //requests
@@ -37,8 +38,10 @@ interface Event {
 
 export const SelectedEventMainPage = () => {
     
-    const dispatch = useAppDispatch();
-    const eventId = useAppSelector(state => state.selectEventEventFinderReducer);
+    const history = useHistory();
+    const location = useLocation();
+    const url = location.pathname;
+    const eventId = parseInt(url.split("/")[2]);
 
     const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
@@ -55,10 +58,17 @@ export const SelectedEventMainPage = () => {
         }
     }
 
+    const goBack = () => {
+        const location = {
+            pathname: '/',
+        }
+        history.push(location);
+    }
+
     if(selectedEvent !== null){
         return (
             <>
-                <div className={SelectedEventMainPageCSS.goBack} onClick={() => dispatch(selectedEventEventFinder(null))}>
+                <div className={SelectedEventMainPageCSS.goBack} onClick={() => goBack()}>
                     <AiOutlineArrowLeft />
                 </div>
                 <div className={SelectedEventMainPageCSS.mainContainer}>
