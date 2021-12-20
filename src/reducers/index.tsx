@@ -6,10 +6,12 @@ import popupEventTypeReducer from './eventsManagement/popupEventType';
 import showEventPopupReducer from './eventsManagement/showEventPopup';
 import isLoggedReducer from './isLogged/isLogged';
 import showNavbarReducer from './navbar/showNavbar';
-import {combineReducers} from 'redux';
+import chooseEventIdReducer from './eventsManagement/chooseEventId';
 //event finder
 import selectEventEventFinderReducer from './eventFinder/selectEventEventFinder';
 import selectEventTypeEventFinderReducer from './eventFinder/selecetEventTypeEventFinder';
+//common
+import {combineReducers} from 'redux';
 
 
 export const rootReducer = combineReducers({
@@ -20,6 +22,7 @@ export const rootReducer = combineReducers({
     eventTypeReducer,
     popupEventTypeReducer,
     showEventPopupReducer,
+    chooseEventIdReducer,
     selectEventEventFinderReducer,
     selectEventTypeEventFinderReducer
 })

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { StringLiteralLike } from 'typescript';
 
 interface EventDataTypes {
     "name": string,
@@ -44,7 +43,6 @@ export const createNewEvent = async (eventData: EventDataTypes) => {
         }
     }
 
-    console.log(requestObject);
     const body = JSON.stringify(requestObject);
 
     try {

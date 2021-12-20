@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 //actions
 import { showEventPopup } from '../../../../../../actions';
 import { popupEventType } from '../../../../../../actions';
+import { chooseEventId } from '../../../../../../actions';
 //requests
 import { userScheduleGetEvents } from './requests/userScheduleGetEvents';
 //icons
@@ -13,6 +14,7 @@ import { BsTrash } from 'react-icons/bs';
 import { BiCalendarEdit } from 'react-icons/bi';
 
 interface Event {
+    "id": number,
     "name": string,
     "description": string,
     "timeFrom": string,
@@ -42,11 +44,16 @@ export const Event = () => {
     const [userScheduleEvents, setUserScheduleEvents] = useState<Event[]>([]);
 
     const selectedType = useAppSelector(state => state.eventTypeReducer);
+    const selectedId = useAppSelector(state => state.chooseEventIdReducer);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         fetchUserScheduleEvents(selectedType);
     }, [selectedType])
+
+    useEffect(() => {
+        console.log(selectedId);
+    },[selectedId]);
 
     const fetchUserScheduleEvents = async (selectedEventType: string) => {
         const response = await userScheduleGetEvents(selectedEventType);
@@ -57,13 +64,16 @@ export const Event = () => {
         }
     }
 
-    const removeEvent = () => {
-        dispatch(popupEventType('removeEvent'))
-        dispatch(showEventPopup(true));
-    }
+    const popupEventMgmt = (e:any) => {
+        const eventId = e.target.dataset.id;
+        const popupType = e.target.dataset.popuptype;
 
-    const modifyEvent = () => {
-        dispatch(popupEventType('modifyEvent'))
+        if(popupType === "delete"){
+            dispatch(popupEventType('removeEvent'));
+        }else if(popupType === "modify"){
+            dispatch(popupEventType('modifyEvent'));
+        }
+        dispatch(chooseEventId(eventId));
         dispatch(showEventPopup(true));
     }
 
@@ -74,8 +84,19 @@ export const Event = () => {
                     return (
                         <div className={EventCSS.eventContainer}>
                             <div className={EventCSS.eventContainer__description}>{val.name}</div>
-                            <div className={EventCSS.eventContainer__action} onClick={() => removeEvent()}><BsTrash /></div>
-                            <div className={EventCSS.eventContainer__action} onClick={() => modifyEvent()}><BiCalendarEdit /></div>
+                            <div
+                                data-id={val.id}
+                                data-popuptype="delete"
+                                className={EventCSS.eventContainer__action}
+                                onClick={(e) => popupEventMgmt(e)}>
+                                    <BsTrash />
+                                </div>
+                            <div
+                                data-id={val.id}
+                                data-popuptype="modify"
+                                className={EventCSS.eventContainer__action}
+                                onClick={(e) => popupEventMgmt(e)}><BiCalendarEdit />
+                            </div>
                         </div>
                     )
                 })
@@ -86,8 +107,18 @@ export const Event = () => {
                     return (
                         <div className={EventCSS.eventContainer}>
                             <div className={EventCSS.eventContainer__description}>{val.name}</div>
-                            <div className={EventCSS.eventContainer__action} onClick={() => removeEvent()}><BsTrash /></div>
-                            <div className={EventCSS.eventContainer__action} onClick={() => modifyEvent()}><BiCalendarEdit /></div>
+                            <div
+                                data-id={val.id}
+                                data-popuptype="delete"
+                                className={EventCSS.eventContainer__action}
+                                onClick={(e) => popupEventMgmt(e)}><BsTrash />
+                            </div>
+                            <div
+                                data-id={val.id}
+                                data-popuptype="modify"
+                                className={EventCSS.eventContainer__action}
+                                onClick={(e) => popupEventMgmt(e)}><BiCalendarEdit />
+                            </div>
                         </div>
                     )
                 })

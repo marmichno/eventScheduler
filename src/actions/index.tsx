@@ -1,20 +1,20 @@
 //schedule management dates
-export const monthChangeDate = (direction:string) => {
-    return{
+export const monthChangeDate = (direction: string) => {
+    return {
         type: 'MONTHCHANGEDATE',
         payload: direction
     }
 }
 
-export const weekChangeDate = (direction:string) => {
-    return{
+export const weekChangeDate = (direction: string) => {
+    return {
         type: 'WEEKCHANGEDATE',
         payload: direction
     }
 }
 
-export const dayChangeDate = (direction:string) => {
-    return{
+export const dayChangeDate = (direction: string) => {
+    return {
         type: 'DAYCHANGEDATE',
         payload: direction
     }
@@ -27,46 +27,53 @@ interface Date {
     year: number
 }
 
-export const setDate = (date:Date) => {
-    return{
+export const setDate = (date: Date) => {
+    return {
         type: 'SETDATE',
         payload: date
     }
-} 
+}
 
-export const scheduleType = (type:string) => {
-    return{
+export const scheduleType = (type: string) => {
+    return {
         type: 'SELECTSCHEDULETYPE',
-        payload:type
+        payload: type
     }
 }
 
 //events management
-export const eventType = (type:string) => {
-    return{
+export const eventType = (type: string) => {
+    return {
         type: "SELECTEVENTTYPE",
-        payload:type
+        payload: type
     }
 }
 
-export const popupEventType = (type:string) => {
-    return{
+export const popupEventType = (type: string) => {
+    return {
         type: "SELECTPOPUPTYPE",
-        payload:type
+        payload: type
     }
 }
 
-export const showEventPopup = (type:boolean) => {
-    return{
+export const showEventPopup = (type: boolean) => {
+    return {
         type: "SHOWEVENTPOPUP",
-        payload:type
+        payload: type
+    }
+}
+
+export const chooseEventId = (id: number) => {
+    return {
+        type: "CHOOSEEVENTID",
+        payload: id
     }
 }
 
 //navbar
 
-export const showNavbar = (showNavbar:boolean) => {
-    return{
+export const showNavbar = (showNavbar: boolean) => {
+    return {
         type: "SHOWNAVBAR",
         payload: showNavbar
     }
@@ -74,15 +81,15 @@ export const showNavbar = (showNavbar:boolean) => {
 
 //events main page
 
-export const selectedEventEventFinder = (selectedEventIdEventFinder:number | null) => {
-    return{
+export const selectedEventEventFinder = (selectedEventIdEventFinder: number | null) => {
+    return {
         type: "SELECTEVENTEVENTFINDER",
         payload: selectedEventIdEventFinder
     }
 }
 
-export const eventsTypeEventFinder = (eventsTypeEventFinder:string) => {
-    return{
+export const eventsTypeEventFinder = (eventsTypeEventFinder: string) => {
+    return {
         type: "EVENTSTYPEEVENTFINDER",
         payload: eventsTypeEventFinder
     }
@@ -90,8 +97,8 @@ export const eventsTypeEventFinder = (eventsTypeEventFinder:string) => {
 
 //if user logged in
 
-export const isLogged = (isLogged:boolean) => {
-    return{
+export const isLogged = (isLogged: boolean) => {
+    return {
         type: "ISLOGGED",
         payload: isLogged
     }
