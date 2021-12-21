@@ -3,16 +3,17 @@ import RemoveEventCSS from './removeEvent.module.scss';
 import { showEventPopup } from '../../../../../../actions';
 //hooks
 import { useAppDispatch } from '../../../../../../hooks';
+import { useAppSelector } from '../../../../../../hooks';
 //requests
 import { deleteEvent } from './requests/deleteEvent';
 
 export const RemoveEvent = () => {
 
     const dispatch = useAppDispatch();
+    const selectedId = useAppSelector(state => state.chooseEventIdReducer);
 
-    const deleteEventRequest = async (e:any) => {
-        const response = await deleteEvent(1);
-
+    const deleteEventRequest = async () => {
+        const response = await deleteEvent(selectedId);
     }
 
     return(
@@ -21,7 +22,7 @@ export const RemoveEvent = () => {
                 <h2>Are you sure you want to delete event name?</h2>
             </div>
             <div className={RemoveEventCSS.container__buttons}>
-                <button onClick={(e) => deleteEventRequest(e)}>yes</button>
+                <button onClick={() => deleteEventRequest()}>yes</button>
                 <button onClick={() => dispatch(showEventPopup(false))}>no</button>
             </div>
         </div>

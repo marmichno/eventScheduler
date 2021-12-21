@@ -44,16 +44,15 @@ export const Event = () => {
     const [userScheduleEvents, setUserScheduleEvents] = useState<Event[]>([]);
 
     const selectedType = useAppSelector(state => state.eventTypeReducer);
-    const selectedId = useAppSelector(state => state.chooseEventIdReducer);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         fetchUserScheduleEvents(selectedType);
-    }, [selectedType])
+    }, [selectedType]);
 
     useEffect(() => {
-        console.log(selectedId);
-    },[selectedId]);
+        console.log(userScheduleEvents);
+    },[userScheduleEvents]);
 
     const fetchUserScheduleEvents = async (selectedEventType: string) => {
         const response = await userScheduleGetEvents(selectedEventType);
@@ -64,13 +63,13 @@ export const Event = () => {
         }
     }
 
-    const popupEventMgmt = (e:any) => {
+    const popupEventMgmt = (e: any) => {
         const eventId = e.target.dataset.id;
         const popupType = e.target.dataset.popuptype;
 
-        if(popupType === "delete"){
+        if (popupType === "delete") {
             dispatch(popupEventType('removeEvent'));
-        }else if(popupType === "modify"){
+        } else if (popupType === "modify") {
             dispatch(popupEventType('modifyEvent'));
         }
         dispatch(chooseEventId(eventId));
@@ -89,8 +88,8 @@ export const Event = () => {
                                 data-popuptype="delete"
                                 className={EventCSS.eventContainer__action}
                                 onClick={(e) => popupEventMgmt(e)}>
-                                    <BsTrash />
-                                </div>
+                                <BsTrash />
+                            </div>
                             <div
                                 data-id={val.id}
                                 data-popuptype="modify"
@@ -107,17 +106,24 @@ export const Event = () => {
                     return (
                         <div className={EventCSS.eventContainer}>
                             <div className={EventCSS.eventContainer__description}>{val.name}</div>
-                            <div
-                                data-id={val.id}
-                                data-popuptype="delete"
-                                className={EventCSS.eventContainer__action}
-                                onClick={(e) => popupEventMgmt(e)}><BsTrash />
+                            <div className={EventCSS.eventContainer__action}>
+                                <div
+                                    data-id={val.id}
+                                    data-popuptype="delete"
+                                    onClick={(e) => popupEventMgmt(e)}
+                                    className={EventCSS.eventContainer__action__clicker}>
+                                </div>
+                                <BsTrash />
                             </div>
                             <div
-                                data-id={val.id}
-                                data-popuptype="modify"
-                                className={EventCSS.eventContainer__action}
-                                onClick={(e) => popupEventMgmt(e)}><BiCalendarEdit />
+                                className={EventCSS.eventContainer__action}>
+                                <div
+                                    data-id={val.id}
+                                    data-popuptype="modify"
+                                    onClick={(e) => popupEventMgmt(e)}
+                                    className={EventCSS.eventContainer__action__clicker}>
+                                </div>
+                                <BiCalendarEdit />
                             </div>
                         </div>
                     )
