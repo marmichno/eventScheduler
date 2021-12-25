@@ -1,6 +1,7 @@
 import scheduleDateReducer from './schedule/scheduleDate';
 import scheduleTypeReducer from './schedule/scheduleType';
 //events management
+import allUserEventsReducer from './eventsManagement/allUserEvents';
 import eventTypeReducer from './eventsManagement/eventType';
 import popupEventTypeReducer from './eventsManagement/popupEventType';
 import showEventPopupReducer from './eventsManagement/showEventPopup';
@@ -24,7 +25,8 @@ export const rootReducer = combineReducers({
     showEventPopupReducer,
     chooseEventIdReducer,
     selectEventEventFinderReducer,
-    selectEventTypeEventFinderReducer
+    selectEventTypeEventFinderReducer,
+    allUserEventsReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>
