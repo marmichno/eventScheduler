@@ -1,3 +1,5 @@
+import axios from "axios"
+
 //schedule management dates
 export const monthChangeDate = (direction: string) => {
     return {
@@ -42,6 +44,12 @@ export const scheduleType = (type: string) => {
 }
 
 //events management
+export const fetchAllUserEvents = () => async (dispatch:any) => {
+    let userInfo = JSON.parse(localStorage["userInfo"]);
+    const response = await axios.get(`http://localhost:8080/api/event/?userId=${userInfo.id}`);
+    dispatch({type: "FETCHALLUSEREVENTS", payload: response});
+}
+
 export const eventType = (type: string) => {
     return {
         type: "SELECTEVENTTYPE",
