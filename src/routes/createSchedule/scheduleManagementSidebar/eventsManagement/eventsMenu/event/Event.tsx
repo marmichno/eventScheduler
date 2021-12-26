@@ -2,66 +2,20 @@ import EventCSS from './event.module.scss';
 //hoks
 import { useAppSelector } from "../../../../../../hooks"
 import { useAppDispatch } from '../../../../../../hooks';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 //actions
 import { showEventPopup } from '../../../../../../actions';
 import { popupEventType } from '../../../../../../actions';
 import { chooseEventId } from '../../../../../../actions';
-//requests
-import { userScheduleGetEvents } from './requests/userScheduleGetEvents';
 //icons
 import { BsTrash } from 'react-icons/bs';
 import { BiCalendarEdit } from 'react-icons/bi';
 
-interface Event {
-    "id": number,
-    "name": string,
-    "description": string,
-    "timeFrom": string,
-    "dateFrom": string,
-    "timeTo": string,
-    "dateTo": string,
-    "eventAvailabilityType": string,
-    "eventType": string
-    "maxNumberOfParticipants": number,
-    "eventAddress": {
-        "houseNumber": string,
-        "street": string,
-        "city": string,
-        "state": string,
-        "coordinates": string
-    },
-    "organizer": {
-        "id": number,
-        "name": string
-    }
-    "participantsList": [],
-    "reasonForRemoval": string | null
-}
-
 export const Event = () => {
 
-    const [userScheduleEvents, setUserScheduleEvents] = useState<Event[]>([]);
-
+    const allUserEvents = useAppSelector(state => state.allUserEvents);
     const selectedType = useAppSelector(state => state.eventTypeReducer);
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        fetchUserScheduleEvents(selectedType);
-    }, [selectedType]);
-
-    useEffect(() => {
-        console.log(userScheduleEvents);
-    },[userScheduleEvents]);
-
-    const fetchUserScheduleEvents = async (selectedEventType: string) => {
-        const response = await userScheduleGetEvents(selectedEventType);
-        if (response.status === 200) {
-            setUserScheduleEvents(response.data);
-        } else {
-            setUserScheduleEvents([]);
-        }
-    }
 
     const popupEventMgmt = (e: any) => {
         const eventId = e.target.dataset.id;
@@ -76,65 +30,79 @@ export const Event = () => {
         dispatch(showEventPopup(true));
     }
 
+    useEffect(() => {
+        console.log(allUserEvents.data);  
+    },[allUserEvents]);
+
     const eventRender = () => {
-        if (selectedType === "private") {
-            return (
-                userScheduleEvents.map(val => {
-                    return (
-                        <div className={EventCSS.eventContainer}>
-                            <div className={EventCSS.eventContainer__description}>{val.name}</div>
-                            <div
-                                data-id={val.id}
-                                data-popuptype="delete"
-                                className={EventCSS.eventContainer__action}
-                                onClick={(e) => popupEventMgmt(e)}>
-                                <BsTrash />
-                            </div>
-                            <div
-                                data-id={val.id}
-                                data-popuptype="modify"
-                                className={EventCSS.eventContainer__action}
-                                onClick={(e) => popupEventMgmt(e)}><BiCalendarEdit />
-                            </div>
-                        </div>
-                    )
-                })
-            )
-        } else if (selectedType === "public") {
-            return (
-                userScheduleEvents.map(val => {
-                    return (
-                        <div className={EventCSS.eventContainer}>
-                            <div className={EventCSS.eventContainer__description}>{val.name}</div>
-                            <div className={EventCSS.eventContainer__action}>
-                                <div
-                                    data-id={val.id}
-                                    data-popuptype="delete"
-                                    onClick={(e) => popupEventMgmt(e)}
-                                    className={EventCSS.eventContainer__action__clicker}>
+        if (allUserEvents['data'].length < 0) {
+            if (selectedType === "private") {
+                return (
+                    allUserEvents['data'].map(val => {
+                        if (val) {
+                            return (
+                                <div className={EventCSS.eventContainer}>
+                                    <div className={EventCSS.eventContainer__description}>{val.name}</div>
+                                    <div
+                                        data-id={val.id}
+                                        data-popuptype="delete"
+                                        className={EventCSS.eventContainer__action}
+                                        onClick={(e) => popupEventMgmt(e)}>
+                                        <BsTrash />
+                                    </div>
+                                    <div
+                                        data-id={val.id}
+                                        data-popuptype="modify"
+                                        className={EventCSS.eventContainer__action}
+                                        onClick={(e) => popupEventMgmt(e)}><BiCalendarEdit />
+                                    </div>
                                 </div>
-                                <BsTrash />
-                            </div>
-                            <div
-                                className={EventCSS.eventContainer__action}>
-                                <div
-                                    data-id={val.id}
-                                    data-popuptype="modify"
-                                    onClick={(e) => popupEventMgmt(e)}
-                                    className={EventCSS.eventContainer__action__clicker}>
+                            )
+                        } else {
+                            return
+                        }
+                    })
+                )
+            } else if (selectedType === "public") {
+                return (
+                    allUserEvents['data'].map(val => {
+                        if (val) {
+                            return (
+                                <div className={EventCSS.eventContainer}>
+                                    <div className={EventCSS.eventContainer__description}>{val.name}</div>
+                                    <div className={EventCSS.eventContainer__action}>
+                                        <div
+                                            data-id={val.id}
+                                            data-popuptype="delete"
+                                            onClick={(e) => popupEventMgmt(e)}
+                                            className={EventCSS.eventContainer__action__clicker}>
+                                        </div>
+                                        <BsTrash />
+                                    </div>
+                                    <div
+                                        className={EventCSS.eventContainer__action}>
+                                        <div
+                                            data-id={val.id}
+                                            data-popuptype="modify"
+                                            onClick={(e) => popupEventMgmt(e)}
+                                            className={EventCSS.eventContainer__action__clicker}>
+                                        </div>
+                                        <BiCalendarEdit />
+                                    </div>
                                 </div>
-                                <BiCalendarEdit />
-                            </div>
-                        </div>
-                    )
-                })
-            )
+                            )
+                        }
+                    })
+                )
+            }
+        } else {
+            return <></>
         }
     }
 
     return (
         <>
-            {eventRender()}
+            {/* {eventRender()} */}
         </>
     )
 }

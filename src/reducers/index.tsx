@@ -26,7 +26,7 @@ export const rootReducer = combineReducers({
     chooseEventIdReducer,
     selectEventEventFinderReducer,
     selectEventTypeEventFinderReducer,
-    allUserEventsReducer
+    allUserEvents: allUserEventsReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

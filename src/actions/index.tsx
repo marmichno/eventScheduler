@@ -44,10 +44,16 @@ export const scheduleType = (type: string) => {
 }
 
 //events management
-export const fetchAllUserEvents = () => async (dispatch:any) => {
+export const fetchAllUserEvents = () => async (dispatch: any) => {
     let userInfo = JSON.parse(localStorage["userInfo"]);
     const response = await axios.get(`http://localhost:8080/api/event/?userId=${userInfo.id}`);
-    dispatch({type: "FETCHALLUSEREVENTS", payload: response});
+    console.log(response);
+    dispatch({
+        type: "FETCHALLUSEREVENTS", payload: {
+            data: response.data, 
+            status: response.status
+        }
+    });
 }
 
 export const eventType = (type: string) => {
