@@ -2,7 +2,7 @@ import EventCSS from './event.module.scss';
 //hoks
 import { useAppSelector } from "../../../../../../hooks"
 import { useAppDispatch } from '../../../../../../hooks';
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 //actions
 import { showEventPopup } from '../../../../../../actions';
 import { popupEventType } from '../../../../../../actions';
@@ -30,16 +30,12 @@ export const Event = () => {
         dispatch(showEventPopup(true));
     }
 
-    useEffect(() => {
-        console.log(allUserEvents.data);  
-    },[allUserEvents]);
-
     const eventRender = () => {
-        if (allUserEvents['data'].length < 0) {
+        if (allUserEvents.fetchStatus === "FETCH_SUCCESS") {
             if (selectedType === "private") {
                 return (
                     allUserEvents['data'].map(val => {
-                        if (val) {
+                        if (val.eventStatus === "ACTIVE") {
                             return (
                                 <div className={EventCSS.eventContainer}>
                                     <div className={EventCSS.eventContainer__description}>{val.name}</div>
@@ -66,7 +62,7 @@ export const Event = () => {
             } else if (selectedType === "public") {
                 return (
                     allUserEvents['data'].map(val => {
-                        if (val) {
+                        if (val.eventStatus === "ACTIVE") {
                             return (
                                 <div className={EventCSS.eventContainer}>
                                     <div className={EventCSS.eventContainer__description}>{val.name}</div>
@@ -91,18 +87,22 @@ export const Event = () => {
                                     </div>
                                 </div>
                             )
+                        } else{
+                            return
                         }
                     })
                 )
             }
-        } else {
+        } else if (allUserEvents.fetchStatus === "BEFORE_FETCH") {
             return <></>
+        } else if (allUserEvents.fetchStatus === "FETCH_ERROR") {
+            return <h2>Something went wrong :c</h2>
         }
     }
 
     return (
         <>
-            {/* {eventRender()} */}
+            {eventRender()}
         </>
     )
 }

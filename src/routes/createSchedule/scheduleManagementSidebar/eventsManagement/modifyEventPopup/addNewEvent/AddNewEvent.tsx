@@ -1,6 +1,10 @@
 import AddNewEventCSS from './addNewEvent.module.scss';
 //components
 import { InputField } from '../../../../../../components/inputField/InputField';
+//hooks
+import { useDispatch } from 'react-redux';
+//actions
+import { fetchAllUserEvents } from '../../../../../../actions';
 //formik
 import { Formik, Form } from 'formik';
 //validationSchema
@@ -9,6 +13,9 @@ import { addNewEventValidationSchema } from './validationSchema/addNewEventValid
 import { createNewEvent } from './requests/creatNewEvent';
 
 export const AddNewEvent = () => {
+
+    const dispatch = useDispatch();
+
     return (
         <div className={AddNewEventCSS.mainContainer}>
             <Formik initialValues={{
@@ -29,9 +36,12 @@ export const AddNewEvent = () => {
                 }
             }}
                 validationSchema={addNewEventValidationSchema}
-                onSubmit={ async (data) => {
-                    console.log(data);
+                onSubmit={async (data) => {
                     const response = await createNewEvent(data);
+                    console.log(response.status);
+                    if (response.status === 201) {
+                        dispatch(fetchAllUserEvents());
+                    }
                 }}
             >
                 <Form className={AddNewEventCSS.mainContainer__formContainer}>

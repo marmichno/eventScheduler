@@ -4,14 +4,15 @@ import MonthScheduleCSS from './monthSchedule.module.scss';
 import { useEffect, useState } from "react";
 import { useAppSelector } from '../../../../../hooks';
 //functions
-import {createArrayOfDays} from '../../common/createArrayOfDays';
+import { createArrayOfDays } from '../../common/createArrayOfDays';
 import { howManyDayFillers } from '../../common/howManyDayFillers';
+import { findEventsForSpecificDay } from '../../common/findEventsForSpecificDay';
 //modules
-import {days} from '../../common/days';
+import { days } from '../../common/days';
 
 interface Provider {
     dayDate: number,
-    selectedMonth: number | string,
+    selectedMonth: number,
     selectedYear: number,
     dayName: string
 }
@@ -19,13 +20,14 @@ interface Provider {
 export const MonthSchedule: React.FC = () => {
 
     const selectedDate = useAppSelector(state => state.scheduleDateReducer);
+    const allUserEvents = useAppSelector(state => state.allUserEvents);
     const [arrayOfDays, setArrayOfDays] = useState<Array<Provider>>([]);
 
     useEffect(() => {
         setArrayOfDays(createArrayOfDays(selectedDate.month, selectedDate.year));
-    },[selectedDate]);
+    }, [selectedDate]);
 
-    return(
+    return (
         <div className={MonthScheduleCSS.monthSchedule}>
             <div className={MonthScheduleCSS.monthSchedule__dayNamesContainer}>
                 {days.map(val => {
@@ -34,15 +36,16 @@ export const MonthSchedule: React.FC = () => {
             </div>
 
             {arrayOfDays.length > 0 ?
-            <div className={MonthScheduleCSS.monthSchedule__scheduleContainer}>
-                {howManyDayFillers(arrayOfDays).map(() => {
-                    return <div className={MonthScheduleCSS.monthSchedule__dayNamesContainer__filler}></div>
-                })}
-                {arrayOfDays.map((value, index) => {
-                    return <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day}>{value.dayDate}</div>
-                })}
-            </div>
-            : null}
+                <div className={MonthScheduleCSS.monthSchedule__scheduleContainer}>
+                    {howManyDayFillers(arrayOfDays).map(() => {
+                        return <div className={MonthScheduleCSS.monthSchedule__dayNamesContainer__filler}></div>
+                    })}
+                    {arrayOfDays.map((value, index) => {
+                        {findEventsForSpecificDay(value.dayDate, value.selectedMonth, allUserEvents)}
+                        return <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day}>{value.dayDate}</div>
+                    })}
+                </div>
+                : null}
         </div>
     )
 }

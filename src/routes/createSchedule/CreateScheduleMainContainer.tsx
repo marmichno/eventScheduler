@@ -17,7 +17,7 @@ export const CreateScheduleContainer = () => {
 
     useEffect(() => {
         dispatch(fetchAllUserEvents());
-    },[])
+    },[]);
 
     return (
         <div className={CreateScheduleMainContainerCSS.mainContainer}>

@@ -24,46 +24,52 @@ interface Event {
             "name": string
         }
     }],
-    "status": number
+    "status": number,
+    "fetchStatus": string
 }
 
 const initialState = {
     "data": [{
-        "id": 1,
-        "name": "Name",
-        "description": "Description",
-        "dateFrom": "2021-10-15T21:39:23",
-        "dateTo": "2021-10-15T21:39:23",
-        "maxNumberOfParticipants": 10,
+        "id": 0,
+        "name": "",
+        "description": "",
+        "dateFrom": "",
+        "dateTo": "",
+        "maxNumberOfParticipants": 0,
         "participantList": [
             {}
         ],
         "address": {
-            "houseNumber": "House number",
-            "street": "Street",
-            "city": "City",
-            "state": "State",
-            "coordinates": "XYZ"
+            "houseNumber": "",
+            "street": "",
+            "city": "",
+            "state": "",
+            "coordinates": ""
         },
-        "eventType": "DEFAULT",
-        "eventStatus": "ACTIVE",
-        "reasonForRemoval": "reason",
+        "eventType": "",
+        "eventStatus": "",
+        "reasonForRemoval": "",
         "organizer": {
-            "id": 1,
-            "name": "UserName"
+            "id": 0,
+            "name": ""
         }
     }],
-    "status": 0
+    "status": 0,
+    "fetchStatus": "BEFORE_FTECH"
 }
 
 const allUserEventsReducer = (state = initialState, action: { payload: Event; type: string; }) => {
 
-    const events: Event = action.payload;
-
-    console.log(events);
+    let events: Event = action.payload;
 
     switch (action.type) {
         case 'FETCHALLUSEREVENTS':
+
+            if(events.status !== 200){
+                events = {...events, fetchStatus: "FETCH_ERROR"}
+            } else if(events.status === 200){
+                events = {...events, fetchStatus: "FETCH_SUCCESS"}
+            }
 
             return events;
 

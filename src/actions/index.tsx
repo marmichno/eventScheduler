@@ -51,7 +51,8 @@ export const fetchAllUserEvents = () => async (dispatch: any) => {
     dispatch({
         type: "FETCHALLUSEREVENTS", payload: {
             data: response.data, 
-            status: response.status
+            status: response.status,
+            fetchStatus: "BEFORE_FETCH"
         }
     });
 }
