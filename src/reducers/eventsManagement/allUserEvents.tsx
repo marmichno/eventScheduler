@@ -1,14 +1,13 @@
 interface Event {
-    "data": [{
+    "data": {
         "id": number,
         "name": string,
         "description": string,
         "dateFrom": string,
-        "dateTo": string,
+        "dataTo": string,
         "maxNumberOfParticipants": number,
-        "participantList": [
-            {}
-        ],
+        "participantList": {
+        }[],
         "address": {
             "houseNumber": string,
             "street": string,
@@ -23,7 +22,7 @@ interface Event {
             "id": number,
             "name": string
         }
-    }],
+    }[],
     "status": number,
     "fetchStatus": string
 }
@@ -34,7 +33,7 @@ const initialState = {
         "name": "",
         "description": "",
         "dateFrom": "",
-        "dateTo": "",
+        "dataTo": "",
         "maxNumberOfParticipants": 0,
         "participantList": [
             {}

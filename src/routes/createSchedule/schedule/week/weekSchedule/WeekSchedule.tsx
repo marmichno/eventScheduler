@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useAppSelector } from '../../../../../hooks';
 //functions
 import {createArrayOfDays} from '../../common/createArrayOfDays';
+import { findEventsForSpecificDay } from '../../common/findEventsForSpecificDay';
 //modules
 import {days} from '../../common/days';
 
@@ -17,12 +18,12 @@ interface Provider {
 
 export const WeekSchedule: React.FC = () => {
 
+    const allUserEvents = useAppSelector(state => state.allUserEvents);
     const selectedDate = useAppSelector(state => state.scheduleDateReducer);
 
     const [arrayOfDays, setArrayOfDays] = useState<Array<Array<Provider>>>([]);
 
     useEffect(() => {
-        console.log(selectedDate.week, selectedDate.month, selectedDate.day)
         const allDaysArray = createArrayOfDays(selectedDate.month, selectedDate.year)
         let newArray = [];
         let i = 0;
@@ -46,7 +47,18 @@ export const WeekSchedule: React.FC = () => {
                 </div>
                 <div className={WeekScheduleCSS.weekSchedule__scheduleContainer}>
                 {arrayOfDays[selectedDate.week].map((value, index) => {
-                    return <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day}>{value.dayDate}</div>
+                    return (
+                        <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day}>
+                            <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__dateContainer}>
+                                <p>{value.dayDate}</p>
+                            </div>
+                            <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer}>
+                                {findEventsForSpecificDay(value.dayDate, selectedDate.month, value.selectedYear, allUserEvents).map(val => {
+                                    return <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer__event}><p>{val.name}</p></div>
+                                })}
+                            </div>
+                        </div>
+                    )
                 })}
             </div>
             </div>

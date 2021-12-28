@@ -41,8 +41,18 @@ export const MonthSchedule: React.FC = () => {
                         return <div className={MonthScheduleCSS.monthSchedule__dayNamesContainer__filler}></div>
                     })}
                     {arrayOfDays.map((value, index) => {
-                        {findEventsForSpecificDay(value.dayDate, value.selectedMonth, allUserEvents)}
-                        return <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day}>{value.dayDate}</div>
+                        return (
+                            <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day}>
+                                <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day__dateContainer}>
+                                    <p>{value.dayDate}</p>
+                                </div>
+                                <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day__eventContainer}>
+                                    {findEventsForSpecificDay(value.dayDate, value.selectedMonth, value.selectedYear, allUserEvents).map(val => {
+                                        return <div className={MonthScheduleCSS.monthSchedule__scheduleContainer__day__eventContainer__event}><p>{val.name}</p></div>
+                                    })}
+                                </div>
+                            </div>
+                        )
                     })}
                 </div>
                 : null}

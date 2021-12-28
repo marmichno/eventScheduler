@@ -31,6 +31,31 @@
             border:solid;
             border-right:none;
             color:$textOnWhiteBackground;
+
+            &__dateContainer{
+                height:10%;
+                width:100%;
+                
+                p{
+                    font-size:2rem;
+                }
+            }
+
+            &__eventContainer{
+                width:100%;
+                height:90%;
+                overflow-y:scroll;
+
+                &__event{
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    background-color:green;
+                    width:100%;
+                    height:20%;
+                    margin-bottom:1%;
+                }
+            }
         }
     }
 }
