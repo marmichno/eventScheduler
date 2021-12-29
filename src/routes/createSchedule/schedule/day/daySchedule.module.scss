@@ -1,34 +1,28 @@
 //variables, mixins
-@import '../../../../styles/resources.scss';
+@import "../../../../styles/resources.scss";
 
-.daySchedule{
-    width:100%;
-    height:100%;
-    overflow-y:scroll;
-    color:$textOnWhiteBackground;
+.daySchedule {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    color: $textOnWhiteBackground;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 30%;
+    grid-gap:1em;
 
-    &__hourContainer{
-        width:100%;
-        height:10%;
+    &__eventContainer {
+        width: 100%;
+        height: 100%;
         display:flex;
+        align-items:center;
+        justify-content:center;
+        border:solid;
+        flex-direction:column;
+        border-radius:10px;
 
-        &__hour{
-            height:100%;
-            width:10%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background-color:$background;
-            color:$textOnWhiteBackground;
-        }
-
-        &__events{
-            width:90%;
-            height:100%;
-            border:solid;
-            border-bottom:none;
-            border-right:none;
-            color:$textOnWhiteBackground;
+        h2{
+            margin-bottom:1em;
         }
     }
 }

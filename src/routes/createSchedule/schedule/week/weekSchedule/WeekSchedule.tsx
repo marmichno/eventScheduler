@@ -32,10 +32,6 @@ export const WeekSchedule: React.FC = () => {
         }
         setArrayOfDays(newArray);
     },[selectedDate]);
-    
-    useEffect(() => {
-        console.log(arrayOfDays);
-    },[arrayOfDays]);
 
     if(arrayOfDays.length > 0 && arrayOfDays[selectedDate.week] !== undefined){
         return(

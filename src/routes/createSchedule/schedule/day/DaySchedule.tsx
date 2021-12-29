@@ -1,20 +1,26 @@
 //css
 import DayScheduleCSS from './daySchedule.module.scss';
+//functions
+import { findEventsForSpecificDay } from '../common/findEventsForSpecificDay';
+//hooks
+import { useAppSelector } from '../../../../hooks';
 
 export const DaySchedule = () => {
 
-    const hours = ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', 
-    '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00',
-    '22:00', '23:00', '00:00', '01:00', '02:00', '03:00', '04:00', '05:00'];
+    const allUserEvents = useAppSelector(state => state.allUserEvents);
+    const selectedDate = useAppSelector(state => state.scheduleDateReducer);
 
-    return(
+    return (
         <div className={DayScheduleCSS.daySchedule}>
-            {hours.map(value => {
-                return( 
-                    <div className={DayScheduleCSS.daySchedule__hourContainer}>
-                        <div className={DayScheduleCSS.daySchedule__hourContainer__hour}>{value}</div>
-                        <div className={DayScheduleCSS.daySchedule__hourContainer__events}></div>
-                    </div>
+            {findEventsForSpecificDay(selectedDate.day, selectedDate.month, selectedDate.year, allUserEvents).map((val, index) => {
+                return (
+                    <>
+                        <div className={DayScheduleCSS.daySchedule__eventContainer}>
+                            <h2>{val.name}</h2>
+                            <p>{`Starts at: ${(val.dateFrom).split("T")[1]}`}</p>
+                            <p>{`Ends at: ${(val.dataTo).split("T")[1]}`}</p>
+                        </div>
+                    </>
                 )
             })}
         </div>
