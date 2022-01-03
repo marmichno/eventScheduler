@@ -57,6 +57,13 @@ export const fetchAllUserEvents = () => async (dispatch: any) => {
     });
 }
 
+export const selectUserEvent = (type: any) => {
+    return {
+        type: "SELECTUSEREVENT",
+        payload: type
+    }
+}
+
 export const eventType = (type: string) => {
     return {
         type: "SELECTEVENTTYPE",

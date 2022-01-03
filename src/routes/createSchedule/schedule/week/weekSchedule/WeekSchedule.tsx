@@ -6,8 +6,6 @@ import { useAppSelector } from '../../../../../hooks';
 //functions
 import {createArrayOfDays} from '../../common/createArrayOfDays';
 import { findEventsForSpecificDay } from '../../common/findEventsForSpecificDay';
-//modules
-import {days} from '../../common/days';
 
 interface Provider {
     dayDate: number,
@@ -50,7 +48,7 @@ export const WeekSchedule: React.FC = () => {
                             </div>
                             <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer}>
                                 {findEventsForSpecificDay(value.dayDate, selectedDate.month, value.selectedYear, allUserEvents).map(val => {
-                                    return <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer__event}><p>{val.name}</p></div>
+                                    return <div data-id={val.id} className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer__event}><p>{val.name}</p></div>
                                 })}
                             </div>
                         </div>

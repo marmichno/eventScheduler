@@ -1,0 +1,24 @@
+//variables, mixins
+@import '../../../../../../styles/resources.scss';
+
+.mainContainer{
+    width:100%;
+    height:90%;
+    background-color:$contentBackground;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    overflow-y:scroll;
+    position:relative;
+    flex-direction:column;
+    text-align:center;
+
+    &__fieldContainer{
+        width:80%;
+        margin-bottom:1em;
+
+        &__address{
+            margin-bottom:1em;
+        }
+    }
+}

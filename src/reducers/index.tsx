@@ -8,6 +8,7 @@ import showEventPopupReducer from './eventsManagement/showEventPopup';
 import isLoggedReducer from './isLogged/isLogged';
 import showNavbarReducer from './navbar/showNavbar';
 import chooseEventIdReducer from './eventsManagement/chooseEventId';
+import selectedUserEventReducer from './eventsManagement/selectedEvent';
 //event finder
 import selectEventEventFinderReducer from './eventFinder/selectEventEventFinder';
 import selectEventTypeEventFinderReducer from './eventFinder/selecetEventTypeEventFinder';
@@ -26,7 +27,8 @@ export const rootReducer = combineReducers({
     chooseEventIdReducer,
     selectEventEventFinderReducer,
     selectEventTypeEventFinderReducer,
-    allUserEvents: allUserEventsReducer
+    allUserEvents: allUserEventsReducer,
+    selectedUserEvent: selectedUserEventReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

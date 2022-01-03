@@ -3,6 +3,7 @@ import EventManagementCSS from './modifyEventPopupManagement.module.scss';
 import { AddNewEvent } from './addNewEvent/AddNewEvent';
 import { RemoveEvent } from './removeEvent/RemoveEvent';
 import { ModifyEvent } from './modifyEvent/ModifyEvent';
+import { EventDetails } from './eventDetails/EventDetails';
 //hooks
 import { useAppSelector } from '../../../../../hooks';
 import { useAppDispatch } from '../../../../../hooks';
@@ -16,13 +17,15 @@ export const ModifyEventPopupMaganement = () => {
     const selectedType = useAppSelector(state => state.popupEventTypeReducer);
 
     const popupRender = () => {
-        switch(selectedType){
+        switch (selectedType) {
             case 'addNewEvent':
-                return <AddNewEvent/>
+                return <AddNewEvent />
             case 'removeEvent':
-                return <RemoveEvent/>
+                return <RemoveEvent />
             case 'modifyEvent':
-                return <ModifyEvent/>
+                return <ModifyEvent />
+            case 'eventDetails':
+                return <EventDetails />
         }
     }
 
@@ -32,7 +35,7 @@ export const ModifyEventPopupMaganement = () => {
                 <div className={EventManagementCSS.popupContainer__close}>
                     <button onClick={() => dispatch(showEventPopup(false))}>x</button>
                 </div>
-            : null
+                : null
             }
             {popupRender()}
         </div>
