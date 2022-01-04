@@ -1,9 +1,15 @@
 //css
 import WeekScheduleCSS from './weekSchedule.module.scss';
 //hooks
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from '../../../../../hooks';
+import { useAppDispatch } from '../../../../../hooks';
+//actions
+import { showEventPopup } from '../../../../../actions';
+import { selectUserEvent } from '../../../../../actions';
+import { popupEventType } from '../../../../../actions';
 //functions
+import findSelectedEvent from '../../common/findSelectedEvent';
 import {createArrayOfDays} from '../../common/createArrayOfDays';
 import { findEventsForSpecificDay } from '../../common/findEventsForSpecificDay';
 
@@ -18,6 +24,7 @@ export const WeekSchedule: React.FC = () => {
 
     const allUserEvents = useAppSelector(state => state.allUserEvents);
     const selectedDate = useAppSelector(state => state.scheduleDateReducer);
+    const dispatch = useAppDispatch();
 
     const [arrayOfDays, setArrayOfDays] = useState<Array<Array<Provider>>>([]);
 
@@ -30,6 +37,12 @@ export const WeekSchedule: React.FC = () => {
         }
         setArrayOfDays(newArray);
     },[selectedDate]);
+
+    const showEventDetails = (e:any) => {
+        dispatch(showEventPopup(true));
+        dispatch(selectUserEvent(findSelectedEvent(allUserEvents, e)));
+        dispatch(popupEventType("eventDetails"));
+    }
 
     if(arrayOfDays.length > 0 && arrayOfDays[selectedDate.week] !== undefined){
         return(
@@ -48,7 +61,7 @@ export const WeekSchedule: React.FC = () => {
                             </div>
                             <div className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer}>
                                 {findEventsForSpecificDay(value.dayDate, selectedDate.month, value.selectedYear, allUserEvents).map(val => {
-                                    return <div data-id={val.id} className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer__event}><p>{val.name}</p></div>
+                                    return <div  onClick = {(e) => showEventDetails(e)} data-id={val.id} className={WeekScheduleCSS.weekSchedule__scheduleContainer__day__eventContainer__event}><p>{val.name}</p></div>
                                 })}
                             </div>
                         </div>

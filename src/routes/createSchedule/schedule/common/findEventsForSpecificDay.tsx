@@ -49,5 +49,5 @@ export const findEventsForSpecificDay = (day: number, month: number, year: numbe
         }
     });
 
-    return filteredEvents.sort((a, b) => Math.abs(new Date(a.dateFrom).valueOf() - (new Date(b.dateFrom).valueOf())));
+    return filteredEvents.sort((a, b) => Math.abs((new Date(b.dateFrom).valueOf() - new Date(a.dateFrom).valueOf()))).reverse();
 }

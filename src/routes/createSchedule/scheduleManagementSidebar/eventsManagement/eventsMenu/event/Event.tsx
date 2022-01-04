@@ -2,11 +2,13 @@ import EventCSS from './event.module.scss';
 //hoks
 import { useAppSelector } from "../../../../../../hooks"
 import { useAppDispatch } from '../../../../../../hooks';
-import { useEffect } from 'react';
 //actions
 import { showEventPopup } from '../../../../../../actions';
 import { popupEventType } from '../../../../../../actions';
 import { chooseEventId } from '../../../../../../actions';
+import { selectUserEvent } from '../../../../../../actions';
+//functions
+import findSelectedEvent from '../../../../schedule/common/findSelectedEvent';
 //icons
 import { BsTrash } from 'react-icons/bs';
 import { BiCalendarEdit } from 'react-icons/bi';
@@ -30,6 +32,12 @@ export const Event = () => {
         dispatch(showEventPopup(true));
     }
 
+    const showEventDetails = (e:any) => {
+        dispatch(showEventPopup(true));
+        dispatch(selectUserEvent(findSelectedEvent(allUserEvents, e)));
+        dispatch(popupEventType("eventDetails"));
+    }
+
     const eventRender = () => {
         if (allUserEvents.fetchStatus === "FETCH_SUCCESS") {
             if (selectedType === "private") {
@@ -38,7 +46,7 @@ export const Event = () => {
                         if (val.eventStatus === "ACTIVE") {
                             return (
                                 <div className={EventCSS.eventContainer}>
-                                    <div className={EventCSS.eventContainer__description}>{val.name}</div>
+                                    <div className={EventCSS.eventContainer__description} data-id={val.id} onClick={e => showEventDetails(e)}>{val.name}</div>
                                     <div
                                         data-id={val.id}
                                         data-popuptype="delete"
@@ -65,7 +73,7 @@ export const Event = () => {
                         if (val.eventStatus === "ACTIVE") {
                             return (
                                 <div className={EventCSS.eventContainer}>
-                                    <div className={EventCSS.eventContainer__description}>{val.name}</div>
+                                    <div className={EventCSS.eventContainer__description} data-id={val.id} onClick={e => showEventDetails(e)}>{val.name}</div>
                                     <div className={EventCSS.eventContainer__action}>
                                         <div
                                             data-id={val.id}
