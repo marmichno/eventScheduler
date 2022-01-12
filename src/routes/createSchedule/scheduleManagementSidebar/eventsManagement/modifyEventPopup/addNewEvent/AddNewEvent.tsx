@@ -7,10 +7,12 @@ import { useDispatch } from 'react-redux';
 import { fetchAllUserEvents } from '../../../../../../actions';
 //formik
 import { Formik, Form } from 'formik';
+import { useField } from 'formik';
 //validationSchema
 import { addNewEventValidationSchema } from './validationSchema/addNewEventValidationSchema';
 //requests
 import { createNewEvent } from './requests/creatNewEvent';
+import { findCityCords } from './requests/findCityCords';
 
 export const AddNewEvent = () => {
 
@@ -32,15 +34,19 @@ export const AddNewEvent = () => {
                     street: "",
                     city: "",
                     state: "",
-                    coordinates: "XYZ"
+                    coordinates: ""
                 }
             }}
                 validationSchema={addNewEventValidationSchema}
                 onSubmit={async (data) => {
-                    const response = await createNewEvent(data);
-                    console.log(response.status);
-                    if (response.status === 201) {
-                        dispatch(fetchAllUserEvents());
+                    const response = await findCityCords(data.eventAddress.city);
+                    data.eventAddress.coordinates = response.data.features[0].geometry.coordinates.join(' ').toString();
+                    console.log(data.eventAddress.coordinates);
+                    if (response.status === 200) {
+                        const response = await createNewEvent(data);
+                        if (response.status === 201) {
+                            dispatch(fetchAllUserEvents());
+                        }
                     }
                 }}
             >
@@ -76,7 +82,7 @@ export const AddNewEvent = () => {
                         <InputField label="Street" name="eventAddress.street" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="City" name="eventAddress.city" type="text" />
+                        <InputField label="City" name="eventAddress.city" type="text"/>
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
                         <InputField label="State" name="eventAddress.state" type="text" />

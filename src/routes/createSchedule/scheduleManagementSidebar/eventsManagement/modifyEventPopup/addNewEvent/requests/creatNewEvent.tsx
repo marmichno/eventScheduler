@@ -39,7 +39,7 @@ export const createNewEvent = async (eventData: EventDataTypes) => {
             "street": eventData.eventAddress.street,
             "city": eventData.eventAddress.city,
             "state": eventData.eventAddress.state,
-            "coordinates": "XYZ"
+            "coordinates": eventData.eventAddress.coordinates
         }
     }
 

@@ -6,6 +6,7 @@ interface Event {
         "dateFrom": string,
         "dataTo": string,
         "maxNumberOfParticipants": number,
+        "eventAvailabilityType": string,
         "participantList": {
         }[],
         "address": {
@@ -35,6 +36,7 @@ const initialState = {
         "dateFrom": "",
         "dataTo": "",
         "maxNumberOfParticipants": 0,
+        "eventAvailabilityType": "",
         "participantList": [
             {}
         ],
@@ -54,7 +56,7 @@ const initialState = {
         }
     }],
     "status": 0,
-    "fetchStatus": "BEFORE_FTECH"
+    "fetchStatus": "BEFORE_FETCH"
 }
 
 const allUserEventsReducer = (state = initialState, action: { payload: Event; type: string; }) => {
