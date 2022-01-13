@@ -4,12 +4,7 @@ import { EventMainPage } from './eventMainPage/EventMainPage';
 import { Searchbar } from '../../searchbar/Searchbar';
 import { SelectedEventMainPage } from './selectedEventMainPage/SelectedEventMainPage';
 //hooks
-import { useAppSelector } from '../../../../hooks';
-import { useAppDispatch } from '../../../../hooks';
-import { useEffect } from 'react';
 import { useLocation } from 'react-router';
-//actions
-import { selectedEventEventFinder } from '../../../../actions';
 
 export const EventsContainer = () => {
 

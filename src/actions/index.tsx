@@ -117,6 +117,27 @@ export const eventsTypeEventFinder = (eventsTypeEventFinder: string) => {
     }
 }
 
+export const filterEventsByNameMain = (name:string) => {
+    return{
+        type: "FILTEREVENTSBYNAMEMAIN",
+        payload: name
+    }
+}
+
+export const filterEventsByLocationMain = (location:string) => {
+    return{
+        type: "FILTEREVENTSBYLOCATIONMAIN",
+        payload: location
+    }
+}
+
+export const filterEventsByDateMain = (date:string) => {
+    return{
+        type: "FILTEREVENTSBYDATEMAIN",
+        payload: date
+    }
+}
+
 //if user logged in
 
 export const isLogged = (isLogged: boolean) => {

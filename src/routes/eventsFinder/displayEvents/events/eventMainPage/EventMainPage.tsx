@@ -13,10 +13,11 @@ interface Event {
     "name": string,
     "description": string,
     "dateFrom": string,
-    "dateTo": string,
-    "eventAvailabilityType": string,
-    "eventType": string
+    "dataTo": string,
     "maxNumberOfParticipants": number,
+    "eventAvailabilityType": string,
+    "participantList": {
+    }[],
     "address": {
         "houseNumber": string,
         "street": string,
@@ -24,12 +25,13 @@ interface Event {
         "state": string,
         "coordinates": string
     },
+    "eventType": string,
+    "eventStatus": string,
+    "reasonForRemoval": string,
     "organizer": {
         "id": number,
         "name": string
     }
-    "participantList": [],
-    "reasonForRemoval": string | null
 }
 
 export const EventMainPage = () => {
@@ -37,6 +39,7 @@ export const EventMainPage = () => {
     const history = useHistory();
     const eventType = useAppSelector(state => state.selectEventTypeEventFinderReducer);
     const allUserEvents = useAppSelector(state => state.allUserEvents);
+    const eventFilters = useAppSelector(state => state.filterEventsMain);
 
     const chooseEvent = (e: any) => {
         const eventId = e.currentTarget.dataset.eventid;
@@ -48,11 +51,74 @@ export const EventMainPage = () => {
         }
     }
 
+    const filterEvent = (event: Event) => {
+
+        const checkEventName = (eventName: string) => {
+            return eventName.toLowerCase().includes(eventFilters.name);
+        }
+
+        const checkEventCity = (eventCity: string) => {
+            return eventCity.toLowerCase().includes(eventFilters.location);
+        }
+
+        const checkEventDate = (eventDate: string) => {
+            return eventDate.toLowerCase().includes(eventFilters.date);
+        }
+
+        // if event is active and same type as selected in options
+        if (event.eventAvailabilityType === eventType && event.eventStatus === "ACTIVE") {
+            // if any filter is applied
+            if (eventFilters.name.length > 0 || eventFilters.location.length > 0 || eventFilters.date.length > 0) {
+                // if all three filters are set
+                if (eventFilters.name.length > 0 && eventFilters.location.length > 0 && eventFilters.date.length > 0) {
+                    let numOfTrue = 0;
+                    checkEventName(event.name) ? numOfTrue += 1 : null;
+                    checkEventCity(event.address.city) ? numOfTrue += 1 : null;
+                    checkEventDate(event.dateFrom) ? numOfTrue += 1 : null;
+                    return numOfTrue === 3;
+                    // if name and location are set
+                } else if (eventFilters.name.length > 0 && eventFilters.location.length > 0) {
+                    let numOfTrue = 0;
+                    checkEventName(event.name) ? numOfTrue += 1 : null;
+                    checkEventCity(event.address.city) ? numOfTrue += 1 : null;
+                    return numOfTrue === 2;
+                    // if name and date are set
+                } else if (eventFilters.name.length > 0 && eventFilters.date.length > 0) {
+                    let numOfTrue = 0;
+                    checkEventName(event.name) ? numOfTrue += 1 : null;
+                    checkEventDate(event.dateFrom) ? numOfTrue += 1 : null;
+                    return numOfTrue === 2;
+                    // if location and date are set
+                } else if (eventFilters.date.length > 0 && eventFilters.location.length) {
+                    let numOfTrue = 0;
+                    checkEventCity(event.address.city) ? numOfTrue += 1 : null;
+                    checkEventDate(event.dateFrom) ? numOfTrue += 1 : null;
+                    return numOfTrue === 2;
+                    // if only name is set
+                } else if (eventFilters.name.length > 0) {
+                    return checkEventName(event.name);
+                    // if only location is set
+                } else if (eventFilters.location.length > 0) {
+                    return checkEventCity(event.address.city);
+                    // if only date is set
+                } else if (eventFilters.date.length > 0) {
+                    return checkEventDate(event.dateFrom);
+                }
+                // if no filters are set
+            } else {
+                return true;
+            }
+            // if event is active or wrong type
+        } else {
+            return false;
+        }
+    }
+
     const eventsRender = () => {
         if (allUserEvents.fetchStatus === "FETCH_SUCCESS") {
             return (
                 allUserEvents['data'].map(val => {
-                    if (val.eventAvailabilityType === eventType && val.eventStatus === "ACTIVE") {
+                    if (filterEvent(val)) {
                         return (
                             <div className={EventMainPageCSS.mainContainer} data-eventid={val.id} onClick={(e) => chooseEvent(e)}>
                                 <div className={EventMainPageCSS.mainContainer__icon}></div>
@@ -76,6 +142,7 @@ export const EventMainPage = () => {
                     }
                 })
             )
+
         } else if (allUserEvents.fetchStatus === "BEFORE_FETCH") {
             return <></>
         } else if (allUserEvents.fetchStatus === "FETCH_ERROR") {
@@ -83,7 +150,7 @@ export const EventMainPage = () => {
         }
     }
 
-    return(
+    return (
         <>
             {eventsRender()}
         </>

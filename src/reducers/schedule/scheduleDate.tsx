@@ -49,7 +49,6 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
             }
         }
         state = { ...state, day: 1}
-        console.log(state);
         return state;
 
         case 'WEEKCHANGEDATE':
@@ -88,7 +87,6 @@ const scheduleDateReducer = (state = initialState, action: { payload: any; type:
         }
 
         state = { ...state, day: 1}
-        console.log(state);
         return state
 
         case 'DAYCHANGEDATE':
