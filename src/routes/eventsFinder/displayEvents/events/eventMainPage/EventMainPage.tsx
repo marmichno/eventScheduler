@@ -15,8 +15,18 @@ interface Event {
     "dateFrom": string,
     "dataTo": string,
     "maxNumberOfParticipants": number,
-    "eventAvailabilityType": string,
-    "participantList": {
+    "participantList":
+    {
+        "id": number,
+        "name": string,
+        "description": string,
+        "email": string,
+        "inviteToFriend": string,
+        "friendsList":
+        {
+            "id": number,
+            "name": string
+        }[]
     }[],
     "address": {
         "houseNumber": string,
@@ -25,8 +35,9 @@ interface Event {
         "state": string,
         "coordinates": string
     },
-    "eventType": string,
-    "eventStatus": string,
+    "type": string,
+    "availabilityType": string,
+    "status": string,
     "reasonForRemoval": string,
     "organizer": {
         "id": number,
@@ -66,7 +77,7 @@ export const EventMainPage = () => {
         }
 
         // if event is active and same type as selected in options
-        if (event.eventAvailabilityType === eventType && event.eventStatus === "ACTIVE") {
+        if (event.availabilityType === eventType && event.status === "ACTIVE") {
             // if any filter is applied
             if (eventFilters.name.length > 0 || eventFilters.location.length > 0 || eventFilters.date.length > 0) {
                 // if all three filters are set

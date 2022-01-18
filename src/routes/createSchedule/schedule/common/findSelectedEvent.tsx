@@ -12,8 +12,18 @@ interface Event {
         "dateFrom": string,
         "dataTo": string,
         "maxNumberOfParticipants": number,
-        "participantList": {
-
+        "participantList":
+        {
+            "id": number,
+            "name": string,
+            "description": string,
+            "email": string,
+            "inviteToFriend": string,
+            "friendsList":
+            {
+                "id": number,
+                "name": string
+            }[]
         }[],
         "address": {
             "houseNumber": string,
@@ -22,8 +32,9 @@ interface Event {
             "state": string,
             "coordinates": string
         },
-        "eventType": string,
-        "eventStatus": string,
+        "type": string,
+        "availabilityType": string,
+        "status": string,
         "reasonForRemoval": string,
         "organizer": {
             "id": number,

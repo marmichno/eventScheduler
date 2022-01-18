@@ -2,24 +2,35 @@ import SelectedEventMainPageCSS from './selectedEventMainPage.module.scss';
 //actions
 import { selectedEventEventFinder } from '../../../../../actions';
 //hooks
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { useLocation } from 'react-router';
 //icons
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 //requests
-import {getSelectedEventEventsFinder} from './request/getSelectedEventEventsFinder';
+import { getSelectedEventEventsFinder } from './request/getSelectedEventEventsFinder';
 
 interface Event {
     "id": number,
     "name": string,
     "description": string,
     "dateFrom": string,
-    "dateTo": string,
-    "eventAvailabilityType": string,
-    "eventType": string
+    "dataTo": string,
     "maxNumberOfParticipants": number,
+    "participantList":
+    {
+        "id": number,
+        "name": string,
+        "description": string,
+        "email": string,
+        "inviteToFriend": string,
+        "friendsList":
+        {
+            "id": number,
+            "name": string
+        }[]
+    }[],
     "address": {
         "houseNumber": string,
         "street": string,
@@ -27,34 +38,74 @@ interface Event {
         "state": string,
         "coordinates": string
     },
+    "type": string,
+    "availabilityType": string,
+    "status": string,
+    "reasonForRemoval": string,
     "organizer": {
         "id": number,
         "name": string
     }
-    "participantList": [],
-    "reasonForRemoval": string | null
 }
 
+const initialState = {
+    "id": 0,
+    "name": "string",
+    "description": "string",
+    "dateFrom": "2022-01-18T21:13:43.265Z",
+    "dataTo": "2022-01-18T21:13:43.265Z",
+    "maxNumberOfParticipants": 0,
+    "participantList": [
+        {
+            "id": 0,
+            "name": "string",
+            "description": "string",
+            "email": "string",
+            "inviteToFriend": "ALREADY_INVITED",
+            "friendsList": [
+                {
+                    "id": 0,
+                    "name": "string"
+                }
+            ]
+        }
+    ],
+    "address": {
+        "houseNumber": "string",
+        "street": "string",
+        "city": "string",
+        "state": "string",
+        "coordinates": "string"
+    },
+    "type": "DEFAULT",
+    "availabilityType": "PUBLIC",
+    "status": "ACTIVE",
+    "reasonForRemoval": "string",
+    "organizer": {
+        "id": 0,
+        "name": "string"
+    }
+}
 
 export const SelectedEventMainPage = () => {
-    
+
     const history = useHistory();
     const location = useLocation();
     const url = location.pathname;
     const eventId = parseInt(url.split("/")[2]);
 
-    const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+    const [selectedEvent, setSelectedEvent] = useState<Event>(initialState);
 
     useEffect(() => {
         fetchEvent()
-    },[]);
+    }, []);
 
     const fetchEvent = async () => {
         const response = await getSelectedEventEventsFinder(eventId);
-        if(response.status === 200){
+        if (response.status === 200) {
             setSelectedEvent(response.data);
-        }else{
-            setSelectedEvent(null);
+        } else {
+            setSelectedEvent(initialState);
         }
     }
 
@@ -65,7 +116,7 @@ export const SelectedEventMainPage = () => {
         history.push(location);
     }
 
-    if(selectedEvent !== null){
+    if (selectedEvent !== null) {
         return (
             <>
                 <div className={SelectedEventMainPageCSS.goBack} onClick={() => goBack()}>
@@ -88,7 +139,7 @@ export const SelectedEventMainPage = () => {
                 </div>
             </>
         )
-    }else{
+    } else {
         return <div>empty div</div>
     }
 }

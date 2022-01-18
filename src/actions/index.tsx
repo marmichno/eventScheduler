@@ -46,15 +46,25 @@ export const scheduleType = (type: string) => {
 //events management
 export const fetchAllUserEvents = () => async (dispatch: any) => {
     let userInfo = JSON.parse(localStorage["userInfo"]);
-    const response = await axios.get(`http://localhost:8080/api/event/?userId=${userInfo.id}`);
-    console.log(response);
-    dispatch({
-        type: "FETCHALLUSEREVENTS", payload: {
-            data: response.data, 
-            status: response.status,
-            fetchStatus: "BEFORE_FETCH"
-        }
-    });
+    try {
+        const response = await axios.get(`http://localhost:8080/api/event/?userId=${userInfo.id}`);
+        dispatch({
+            type: "FETCHALLUSEREVENTS", payload: {
+                data: response.data,
+                status: response.status,
+                fetchStatus: "BEFORE_FETCH"
+            }
+        });
+    } catch (error:any) {
+        dispatch({
+            type: "FETCHALLUSEREVENTS", payload: {
+                data: {},
+                status: error.response.status,
+                fetchStatus: "FETCH_ERROR"
+            }
+        });
+    }
+
 }
 
 export const selectUserEvent = (type: any) => {
@@ -103,6 +113,17 @@ export const showNavbar = (showNavbar: boolean) => {
 
 //events main page
 
+export const fetchAllEvents = () => async (dispatch: any) => {
+    const response = await axios.get(`http://localhost:8080/api/event/`);
+    dispatch({
+        type: "FETCHALLEVENTS", payload: {
+            data: response.data,
+            status: response.status,
+            fetchStatus: "BEFORE_FETCH"
+        }
+    });
+}
+
 export const selectedEventEventFinder = (selectedEventIdEventFinder: number | null) => {
     return {
         type: "SELECTEVENTEVENTFINDER",
@@ -117,22 +138,22 @@ export const eventsTypeEventFinder = (eventsTypeEventFinder: string) => {
     }
 }
 
-export const filterEventsByNameMain = (name:string) => {
-    return{
+export const filterEventsByNameMain = (name: string) => {
+    return {
         type: "FILTEREVENTSBYNAMEMAIN",
         payload: name
     }
 }
 
-export const filterEventsByLocationMain = (location:string) => {
-    return{
+export const filterEventsByLocationMain = (location: string) => {
+    return {
         type: "FILTEREVENTSBYLOCATIONMAIN",
         payload: location
     }
 }
 
-export const filterEventsByDateMain = (date:string) => {
-    return{
+export const filterEventsByDateMain = (date: string) => {
+    return {
         type: "FILTEREVENTSBYDATEMAIN",
         payload: date
     }

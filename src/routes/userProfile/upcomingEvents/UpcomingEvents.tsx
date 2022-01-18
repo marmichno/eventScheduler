@@ -19,46 +19,6 @@ export const UpcomingEvents = () => {
             "eventName": "some kind of event",
             "eventDate": "2021-11-23",
             "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
-        },
-        {
-            "eventName": "some kind of event",
-            "eventDate": "2021-11-23",
-            "eventTime": "18:30"
         }
     ])
 

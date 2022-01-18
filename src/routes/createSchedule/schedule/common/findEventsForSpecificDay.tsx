@@ -6,8 +6,18 @@ interface Event {
         "dateFrom": string,
         "dataTo": string,
         "maxNumberOfParticipants": number,
-        "participantList": {
-
+        "participantList":
+        {
+            "id": number,
+            "name": string,
+            "description": string,
+            "email": string,
+            "inviteToFriend": string,
+            "friendsList":
+            {
+                "id": number,
+                "name": string
+            }[]
         }[],
         "address": {
             "houseNumber": string,
@@ -16,8 +26,9 @@ interface Event {
             "state": string,
             "coordinates": string
         },
-        "eventType": string,
-        "eventStatus": string,
+        "type": string,
+        "availabilityType": string,
+        "status": string,
         "reasonForRemoval": string,
         "organizer": {
             "id": number,
@@ -37,7 +48,7 @@ export const findEventsForSpecificDay = (day: number, month: number, year: numbe
     let comparablePassedDate = `${year}-${comparableMonth}-${comparableDay}`;
 
     let filteredEvents = allUserEvents.data.filter(val => {
-        if (val.eventStatus === "DELETED") {
+        if (val.status === "DELETED") {
             return false;
         }
         let dateFrom = val.dateFrom.split("T")[0];

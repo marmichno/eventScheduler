@@ -1,19 +1,30 @@
-.mainContainer{
-    width:100vw;
-    height:92.5vh;
-    margin-top:7.5vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    position:relative;
+//variables, mixins
+@import "../../styles/resources.scss";
 
-    &__contentContainer{
-        width:97.5%;
-        height:100%;
-        display:grid;
-        grid-template-rows: 31.9% 3.3% 28.6% 8.3% 13% 16.6%;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap:2em;
+.mainContainer {
+    width: 100vw;
+    height: 92.5vh;
+    margin-top: 7.5vh;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: relative;
+    overflow:hidden;
+
+    &__profileSidebar {
+        width: 100%;
+        height: 100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    &__scrollableContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow-y: scroll;
     }
 }

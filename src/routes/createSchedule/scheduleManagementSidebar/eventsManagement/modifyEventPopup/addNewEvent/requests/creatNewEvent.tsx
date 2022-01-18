@@ -32,9 +32,9 @@ export const createNewEvent = async (eventData: EventDataTypes) => {
         "description": eventData.description,
         "dateFrom": `${eventData.dateFrom}T${eventData.timeFrom}:00`,
         "dateTo": `${eventData.dateTo}T${eventData.timeTo}:00`,
-        "eventAvailabilityType": eventData.eventAvailabilityType,
+        "availabilityType": eventData.eventAvailabilityType,
         "maxNumberOfParticipants": eventData.maxNumberOfParticipants,
-        "eventAddress": {
+        "address": {
             "houseNumber": eventData.eventAddress.houseNumber,
             "street": eventData.eventAddress.street,
             "city": eventData.eventAddress.city,

@@ -21,8 +21,8 @@ export const EventsMapContainer = () => {
 
         return (
             allUserEvents.data.map(val => {
-                if (val.eventStatus === 'ACTIVE') {
-                    if (val.eventAvailabilityType === eventType) {
+                if (val.status === 'ACTIVE') {
+                    if (val.availabilityType === eventType) {
                         const coordinates = val.address.coordinates.split(" ").map(val => parseFloat(val));
                         const lat = coordinates.length === 2 ? coordinates[0] : 1;
                         const lng = coordinates.length === 2 ? coordinates[1] : 1;

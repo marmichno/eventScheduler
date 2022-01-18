@@ -43,7 +43,7 @@ export const Event = () => {
             if (selectedType === "private") {
                 return (
                     allUserEvents['data'].map(val => {
-                        if (val.eventStatus === "ACTIVE") {
+                        if (val.status === "ACTIVE") {
                             return (
                                 <div className={EventCSS.eventContainer}>
                                     <div className={EventCSS.eventContainer__description} data-id={val.id} onClick={e => showEventDetails(e)}>{val.name}</div>
@@ -70,7 +70,7 @@ export const Event = () => {
             } else if (selectedType === "public") {
                 return (
                     allUserEvents['data'].map(val => {
-                        if (val.eventStatus === "ACTIVE") {
+                        if (val.status === "ACTIVE") {
                             return (
                                 <div className={EventCSS.eventContainer}>
                                     <div className={EventCSS.eventContainer__description} data-id={val.id} onClick={e => showEventDetails(e)}>{val.name}</div>
