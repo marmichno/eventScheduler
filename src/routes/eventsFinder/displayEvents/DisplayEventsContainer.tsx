@@ -7,13 +7,14 @@ import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 //actions
 import { fetchAllUserEvents } from '../../../actions'
+import { fetchAllEvents } from '../../../actions'
 
 export const DisplayEventsContainer = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchAllUserEvents());
+        dispatch(fetchAllEvents());
     },[])
 
     return(

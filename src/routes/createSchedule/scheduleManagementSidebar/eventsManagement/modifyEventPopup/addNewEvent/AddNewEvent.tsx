@@ -1,6 +1,7 @@
 import AddNewEventCSS from './addNewEvent.module.scss';
 //components
 import { InputField } from '../../../../../../components/inputField/InputField';
+import { RichTextInput } from './richText/RichTextInput';
 //hooks
 import { useDispatch } from 'react-redux';
 //actions
@@ -20,6 +21,9 @@ export const AddNewEvent = () => {
 
     return (
         <div className={AddNewEventCSS.mainContainer}>
+            <div className={AddNewEventCSS.mainContainer__description}>
+                <RichTextInput />
+            </div>
             <Formik initialValues={{
                 name: "",
                 description: "",
@@ -55,9 +59,6 @@ export const AddNewEvent = () => {
                         <InputField label="Event name" name="name" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="Event Description" name="description" type="text" />
-                    </div>
-                    <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
                         <InputField label="Start time" name="timeFrom" type="time" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
@@ -82,12 +83,12 @@ export const AddNewEvent = () => {
                         <InputField label="Street" name="eventAddress.street" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
-                        <InputField label="City" name="eventAddress.city" type="text"/>
+                        <InputField label="City" name="eventAddress.city" type="text" />
                     </div>
                     <div className={AddNewEventCSS.mainContainer__formContainer__inputContainer}>
                         <InputField label="State" name="eventAddress.state" type="text" />
                     </div>
-                    <button type="submit">Add Event</button>
+                    <button className={AddNewEventCSS.mainContainer__formContainer__button} type="submit">Add Event</button>
                 </Form>
             </Formik>
         </div>

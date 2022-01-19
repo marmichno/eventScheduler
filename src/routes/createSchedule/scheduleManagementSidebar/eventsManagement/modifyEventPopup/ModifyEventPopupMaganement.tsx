@@ -19,7 +19,7 @@ export const ModifyEventPopupMaganement = () => {
     const popupRender = () => {
         switch (selectedType) {
             case 'addNewEvent':
-                return <AddNewEvent />
+                return (<AddNewEvent />)
             case 'removeEvent':
                 return <RemoveEvent />
             case 'modifyEvent':

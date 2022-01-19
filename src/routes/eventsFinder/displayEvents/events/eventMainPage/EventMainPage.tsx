@@ -157,7 +157,9 @@ export const EventMainPage = () => {
         } else if (allUserEvents.fetchStatus === "BEFORE_FETCH") {
             return <></>
         } else if (allUserEvents.fetchStatus === "FETCH_ERROR") {
-            <h2>Something went wrong :c</h2>
+            <div className={EventMainPageCSS.mainContainer}>
+                <h2>Something went wrong :c</h2>
+            </div>
         }
     }
 

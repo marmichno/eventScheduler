@@ -10,14 +10,18 @@ export const UserProfile = () => {
     return (
         <div className={UserProfileCSS.mainContainer}>
             <Navbar />
-                <div className={UserProfileCSS.mainContainer__profileSidebar}>
+            <div className={UserProfileCSS.mainContainer__contentContainer}>
+                <div className={UserProfileCSS.mainContainer__contentContainer__userDetails}>
                     <UserDetails />
-                </div>
-                <div className={UserProfileCSS.mainContainer__scrollableContainer}>
                     <UserNortifications />
+                </div>
+                <div className={UserProfileCSS.mainContainer__contentContainer__upcomingEvents}>
                     <UpcomingEvents />
+                </div>
+                <div className={UserProfileCSS.mainContainer__contentContainer__friendsAndGroups}>
                     <FriendsAndGroups />
                 </div>
+            </div>
         </div>
     )
 }

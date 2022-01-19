@@ -5,26 +5,49 @@
     width: 100vw;
     height: 92.5vh;
     margin-top: 7.5vh;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    position: relative;
-    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    &__profileSidebar {
-        width: 100%;
-        height: 100%;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
+    &__contentContainer {
+        height:90%;
+        width:65%;
+        display: grid;
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 40% 60%;
+        grid-gap:1.5em;
+        position: relative;
+        overflow: hidden;
 
-    &__scrollableContainer {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        overflow-y: scroll;
+        &__userDetails {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction:column;
+            grid-row:span 2;
+            background-color:$contentBackground;
+        }
+
+        &__upcomingEvents {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color:$contentBackground;
+        }
+
+        &__friendsAndGroups{
+            width:100%;
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            background-color:blue;
+        }
     }
 }

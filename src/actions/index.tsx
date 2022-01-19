@@ -114,14 +114,24 @@ export const showNavbar = (showNavbar: boolean) => {
 //events main page
 
 export const fetchAllEvents = () => async (dispatch: any) => {
-    const response = await axios.get(`http://localhost:8080/api/event/`);
-    dispatch({
-        type: "FETCHALLEVENTS", payload: {
-            data: response.data,
-            status: response.status,
-            fetchStatus: "BEFORE_FETCH"
-        }
-    });
+    try {
+        const response = await axios.get(`http://localhost:8080/api/event/`);
+        dispatch({
+            type: "FETCHALLUSEREVENTS", payload: {
+                data: response.data,
+                status: response.status,
+                fetchStatus: "BEFORE_FETCH"
+            }
+        });
+    } catch (error:any) {
+        dispatch({
+            type: "FETCHALLUSEREVENTS", payload: {
+                data: {},
+                status: error.response.status,
+                fetchStatus: "FETCH_ERROR"
+            }
+        });
+    }
 }
 
 export const selectedEventEventFinder = (selectedEventIdEventFinder: number | null) => {
